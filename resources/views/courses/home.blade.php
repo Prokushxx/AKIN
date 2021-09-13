@@ -14,21 +14,21 @@
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
               soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>
-              <a href=""><div class="btn btn-success"> Apply Now</div></a>
+              <a href="#"><div class="btn btn-success"> Apply Now</div></a>
       </div>
       <div class="course-col">
           <h3>Network Support</h3>
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
               soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>
-              <a href=""><div class="btn btn-success"> Apply Now</div></a>
+              <a href="#"><div class="btn btn-success"> Apply Now</div></a>
       </div>
       <div class="course-col">
           <h3>Customer Service</h3>
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
               soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>
-              <a href=""><div class="btn btn-success"> Apply Now</div></a>
+              <a href="#"><div class="btn btn-success"> Apply Now</div></a>
       </div>
   </div>
   <div class="row">
@@ -37,14 +37,14 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
             soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>
-            <a href=""><div class="btn btn-success"> Apply Now</div></a>
+            <a href="#"><div class="btn btn-success"> Apply Now</div></a>
     </div>
     <div class="course-col2">
       <h3>House Keeping</h3>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
           soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>
-          <a href=""><div class="btn btn-success"> Apply Now</div></a>
+          <a href="#"><div class="btn btn-success"> Apply Now</div></a>
   </div>
   </div>
 </section>

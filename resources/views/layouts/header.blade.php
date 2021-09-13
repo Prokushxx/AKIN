@@ -158,19 +158,14 @@
       </div>
       <i class="fa fa-bars" onclick="showMenu()"></i>
   </nav>
-
   <div class="text-box">
       <h1>H.E.A.R.T</h1>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
-      <a href="#" class="hero-btn">LOGIN</a>
-      <a href="#" class="hero-btn">REGISTER</a><br><br>
+      <a href="login" class="hero-btn">LOGIN</a>
+      <a href="register" class="hero-btn">REGISTER</a><br><br>
       <a href="courses" class="hero-btn">APPLY</a>
-
   </div>
 </section>
-
 @yield('body')
-
-
 </body>
 </html>

@@ -18,4 +18,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-route::get('courses',[Register::class,'show']);
+route::view('/courses','courses\home');
+route::get('/register',[Register::class,'show']);
+route::post('/register',[Register::class,'store'])->name('register.save');
+route::get('/login',[Register::class,'show_login']);
+route::post('/login',[Register::class,'login'])->name('login.info');
+
