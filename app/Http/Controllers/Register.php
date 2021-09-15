@@ -57,13 +57,14 @@ class Register extends Controller
       'email.email' => 'The email or password is incorrect',
       'email.exists' => 'Does not match email',
       'required' => 'Please fill out all fields',
-      // 'password.password' => 'The password is incorrect',
+      // 'pwd.password' => 'The password is incorrect',
     ]);
-
-    if (Auth::attempt(['email' => $req->email, 'password' => $req->pwd])) {
+  $email=$req->email;
+  $password=$req->pwd;
+    if (Auth::attempt(['email'=>$email,'password'=>$password])) {
       return view('home');
     } else {
-      return  redirect()->back()->withErrors($val);
+      return  back()->withErrors(['pwd'=>'Incorrect Password']);
     }
   }
 }
