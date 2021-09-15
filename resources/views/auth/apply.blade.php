@@ -1,4 +1,4 @@
-<form action="{{ route('student.apply') }}" method="POST">
+<form action="{{ route('student.apply') }}" method="POST" enctype="multipart/form-data">
   @csrf
   <input type="number" name="TRN" placeholder="TRN#" value="{{ old('TRN') }}">
   @error('TRN')
@@ -60,14 +60,14 @@
   @error('telephone')
   {{ $message }}  
   @enderror <br>
+  <label for="photo">Upload Photo</label><br>
+<input type="file" name = "photo"> <br>
   <input type="submit" value="Submit">
 </form>
 <br>
-<form action="" method="POST">
-  @csrf
-<label for="photo">Upload Photo</label>
-<input type="file" name = "photo">
-</form>
+
+
+
 <br>
 
 <h1>QUALIFICATIONS</h1>

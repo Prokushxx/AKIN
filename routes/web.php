@@ -27,3 +27,7 @@ route::post('/login',[Register::class,'login'])->name('login.info');
 route::get('/apply',[Apply::class,'show_apply']);
 route::post('/apply',[Apply::class,'store_student'])->name(('student.apply'));
 
+
+
+
+

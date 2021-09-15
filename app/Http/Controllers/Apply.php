@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Application;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Photo;
 // use Illuminate\Support\Facades\Hash;
 
 class Apply extends Controller
@@ -31,7 +32,6 @@ class Apply extends Controller
         'country' => 'required',
         'parish' => 'required',
         'telephone' => 'required',
-        'fname' => 'required'
       ],
       [
         'required' => '*This field cannot be empty',
@@ -57,5 +57,31 @@ class Apply extends Controller
     $tbl->parish = $req->parish;
     $tbl->telephone = $req->telephone;
     $tbl->save();
+
+    $photoname = $req->file('photo')->getClientOriginalName();
+    $location = $req->file('photo')->storeAs('public/PHOTO', $photoname);
+    $pics = new Photo;
+    $pics->pic_name = $photoname;
+    $pics->pic_location = $location;
+    $pics->save();
+    return redirect()->back();
+  }
+  function qual_store(Request $req)
+  {
+    $validate = Validator::make($req->all(), [
+
+      'subject' => 'required',
+      'exam' => 'required',
+      'qual' => 'required',
+      'grade' => 'required',
+      'year' => 'required',
+    ], [
+      'required' => '*This field cannot be empty'
+    ]);
+    if ($validate->fails()) {
+      return redirect()->back()
+        ->withErrors($validate)
+        ->withInput();
+    }
   }
 }
