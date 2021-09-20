@@ -163,7 +163,7 @@
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
       <a href="login" class="hero-btn">LOGIN</a>
       <a href="register" class="hero-btn">REGISTER</a><br><br>
-      <a href="courses" class="hero-btn">APPLY</a>
+      <a href="courses#course" class="hero-btn">APPLY</a>
   </div>
 </section>
 @yield('body')

@@ -15,12 +15,13 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('c_id')->constrained('courses','c_id');
             $table->integer('TRN');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('gender');
             $table->date('DOB');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('street');
             $table->string('town');
             $table->string('country');
@@ -40,3 +41,4 @@ class CreateStudentsTable extends Migration
         Schema::dropIfExists('students');
     }
 }
+

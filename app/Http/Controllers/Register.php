@@ -64,7 +64,7 @@ class Register extends Controller
     if (Auth::attempt(['email'=>$email,'password'=>$password])) {
       return view('home');
     } else {
-      return  back()->withErrors(['pwd'=>'Incorrect Password']);
+      return  back()->withErrors($val);
     }
   }
 }

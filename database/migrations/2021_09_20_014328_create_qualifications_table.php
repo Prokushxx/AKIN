@@ -15,6 +15,7 @@ class CreateQualificationsTable extends Migration
     {
         Schema::create('qualifications', function (Blueprint $table) {
             $table->smallIncrements('qual_id');
+            $table->foreignId('id')->constrained('students','id');
             $table->string('subject');
             $table->string('exam_body');
             $table->string('qualification');
