@@ -17,7 +17,7 @@ class Login
     public function handle(Request $request, Closure $next)
     {
       if(!$request->Session()->has('user')){
-        return view('auth.login');
+        return redirect('/login');
       }
         return $next($request);
     }
