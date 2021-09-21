@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Apply;
+use App\Http\Middleware\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,18 @@ Route::get('/', function () {
 });
 
 route::view('/courses','courses\home');
-route::get('/register',[Register::class,'show']);
-route::post('/register',[Register::class,'store'])->name('register.save');
 route::get('/login',[Register::class,'show_login']);
 route::post('/login',[Register::class,'login'])->name('login.info');
-route::get('/apply',[Apply::class,'show_apply']);
-route::post('/apply',[Apply::class,'store_student'])->name(('student.apply'));
+route::get('/register',[Register::class,'show']);
+route::post('/register',[Register::class,'store'])->name('register.save');
+
+  Route::group(['middleware'=>['login']], function () {
+  route::get('/apply',[Apply::class,'show_apply']);
+  route::post('/apply',[Apply::class,'store_student'])->name('student.apply');
+  route::post('/apply/qual',[Apply::class,'qual_store'])->name('store.qual');
+});
+
+route::get('/logout',[Register::class,'logout'])->name('logout');
 
 
 

@@ -4,19 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use App\Models\Courses;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\Models\Photo;
+use Database\Seeders\courses as SeedersCourses;
+
+// use Database\Seeders\courses;
+
 // use Illuminate\Support\Facades\Hash;
 
 class Apply extends Controller
 {
   function show_apply()
   {
-    return view('auth.apply');
+  $courses= Courses::all();
+
+  $studentpic = DB::table('students')
+  ->join('pics','students.id','=','pics.pic_id')
+  ->select('pic_id');
+
+    return view('auth.apply',compact('courses','studentpic'));
   }
   function store_student(Request $req)
   {
-
     $val = Validator::make(
       $req->all(),
       [
@@ -49,6 +60,7 @@ class Apply extends Controller
     $tbl->firstname = $req->fname;
     $tbl->lastname = $req->lname;
     $tbl->gender = $req->gender;
+    $tbl->c_id = $req->course;
     $tbl->DOB = $req->DOB;
     $tbl->email = $req->email;
     $tbl->street = $req->street;
@@ -59,10 +71,11 @@ class Apply extends Controller
     $tbl->save();
 
     $photoname = $req->file('photo')->getClientOriginalName();
-    $location = $req->file('photo')->storeAs('public/PHOTO', $photoname);
+    $location = $req->file('photo')->storeAs('public/PHOTO/', $photoname);
     $pics = new Photo;
     $pics->pic_name = $photoname;
     $pics->pic_location = $location;
+    $pics->id = $req->photo;
     $pics->save();
     return redirect()->back();
   }

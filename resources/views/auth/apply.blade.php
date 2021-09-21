@@ -1,5 +1,13 @@
+@extends('layouts.navbar')
+
+@section('title','Application Form')
+
+@section('body')
+
 <form action="{{ route('student.apply') }}" method="POST" enctype="multipart/form-data">
   @csrf
+
+  
   <input type="number" name="TRN" placeholder="TRN#" value="{{ old('TRN') }}">
   @error('TRN')
   {{ $message }}  
@@ -22,12 +30,10 @@
   {{ $message }}  
   @enderror <br>
   <label for="course">COURSES</label><br> 
-  <select name="course" id="">
-    <option value="web">Web Development</option>
-    <option value="net">Network Support</option>
-    <option value="AA">Administrative Assistance</option>
-    <option value="HK">House Keeping</option>
-    <option value="CS">Customer Service</option>
+  <select name="course" id="course">
+    @foreach ($courses as $course )
+    <option value="{{ $course->c_id }}">{{ $course->c_name }}</option>
+    @endforeach
   </select>
   @error('course')
   {{ $message }}  
@@ -60,25 +66,25 @@
   @error('telephone')
   {{ $message }}  
   @enderror <br>
-  <label for="photo">Upload Photo</label><br>
-<input type="file" name = "photo"> <br>
+  @if ($user = Session('user'))
+  {{-- <label for="photo" value="{{ $user->username }}">Upload Photo</label><br> --}}
+  <input type="file" name = "photo" value=""><br>
+  @endif
   <input type="submit" value="Submit">
 </form>
 <br>
-
-
-
 <br>
-
 <h1>QUALIFICATIONS</h1>
-<form action="#" method="POST">
-
+<form action="{{ route('store.qual') }}" method="POST">
+@csrf
   <input type="text" name="subject" value="" placeholder="Subject">
   <input type="text" name="exam" value="" placeholder="Examination Body">
   <input type="text" name="qual" value="" placeholder="Qualifications">
   <input type="text" name="grade" value="" placeholder="Grade">
   <input type="text" name="year" value="" placeholder="Year">
-  
+  <input type="submit" value="Submit">
 </form>
 
-<a href="/"><button>HOME</button></a>
+
+
+@endsection

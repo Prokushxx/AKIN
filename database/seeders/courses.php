@@ -15,16 +15,16 @@ class courses extends Seeder
   public function run()
   {
     DB::table('courses')->insert([[
-      'course_name' => 'Web Development'
+      'c_name' => 'Web Development'
     ], 
     [
-      'course_name' => 'Customer Service'
+      'c_name' => 'Customer Service'
     ],[
-      'course_name' => 'Administrative Assistance'
+      'c_name' => 'Administrative Assistance'
     ],[
-      'course_name' => 'Network Support'
+      'c_name' => 'Network Support'
     ],[
-      'course_name' => 'House Keeping'
+      'c_name' => 'House Keeping'
     ]]);
   }
 }

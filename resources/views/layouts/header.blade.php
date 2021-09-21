@@ -153,7 +153,8 @@
               <li><a href="#">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               <li><a href="#">ADMIN</a></li>
-              
+              <li><a href="{{ route('logout') }}">LOG OUT</a></li>
+              {{ Session('user') }}
           </ul>
       </div>
       <i class="fa fa-bars" onclick="showMenu()"></i>

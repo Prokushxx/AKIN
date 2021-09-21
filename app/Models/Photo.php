@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Photo extends Model
 {
     use HasFactory;
-    protected $table = 'picture';
+    protected $table = 'pics';
+    protected $primaryKey = 'pic_id';
+  
+    // protected function getApply(){
+    //   return $this->belongsTo('App\Application','id','pic_id');
+    // }
 }

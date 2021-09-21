@@ -7,7 +7,7 @@
     }
 
     .header {
-        min-height: 80vh;
+        min-height: 100vh;
         width: 100%;
         background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url();
         background-position: center;
@@ -129,77 +129,6 @@
             cursor: pointer;
         }
     }
-     /* course */
-     .course {
-        width: 80%;
-        margin: auto;
-        text-align: center;
-        padding-top: 100px;
-    }
-
-    h1 {
-        font-size: 36px;
-        font-weight: 600;
-    }
-
-    p {
-        color: #777;
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 22px;
-        padding: 10px;
-    }
-
-    .row {
-        margin-top: 5%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .course-col {
-        flex-basis: 31%;
-        background: #fff3f3;
-        border-radius: 10px;
-        margin-bottom: 5%;
-        padding: 20px 12px;
-        box-sizing: border-box;
-        transition: 0.5s;
-    }
-
-    .course-col2 {
-        flex-basis: 44%;
-        background: #fff3f3;
-        border-radius: 10px;
-        margin-bottom: 5%;
-        padding: 20px 12px;
-        box-sizing: border-box;
-        transition: 0.5s;
-    }
-
-    h3 {
-        text-align: center;
-        font-weight: 600;
-        margin: 10px 0;
-    }
-
-    .course-col:hover {
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    @media(max-width: 700px) {
-        .row {
-            flex-direction: column;
-        }
-    }
-    .course-col2:hover {
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    @media(max-width: 700px) {
-        .row {
-            flex-direction: column;
-        }
-    }
   </style>
 <head>
   <meta charset="UTF-8">
@@ -224,22 +153,13 @@
               <li><a href="#">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               <li><a href="#">ADMIN</a></li>
-              <li><a href="{{ route('logout') }}">LOG OUT</a></li>
+              <li><a href="{{ route('logout') }}">Logout</a></li>
               
           </ul>
       </div>
       <i class="fa fa-bars" onclick="showMenu()"></i>
   </nav>
 
-  <div class="text-box">
-      <h2>H.E.A.R.T</h2>
-     <p style="font-weight: 700">Your Competence is Our Goal</p>
-
-  </div>
-</section>
-
-@yield('body')
-
-
-</body>
-</html>
+  @yield('body')
+  <body>
+    

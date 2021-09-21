@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
-use App\Models\Users;
+use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,6 @@ class Register extends Controller
     $validator = Validator::make($req->all(), [
       'name' => 'required',
       'email' => 'required|unique:users,email',
-      'age' => 'required',
       'pwd' => 'required|min:8|alpha_dash',
       'conpwd' => 'required|same:pwd'
     ], [
@@ -36,10 +36,9 @@ class Register extends Controller
         ->withErrors($validator)
         ->withInput();
     }
-    $mod = new Users;
-    $mod->name = $req->name;
+    $mod = new User;
+    $mod->username = $req->name;
     $mod->email = $req->email;
-    $mod->age = $req->age;
     $mod->password = Hash::make($req->pwd);
     $mod->save();
     return view('auth\login');
@@ -59,12 +58,31 @@ class Register extends Controller
       'required' => 'Please fill out all fields',
       // 'pwd.password' => 'The password is incorrect',
     ]);
-  $email=$req->email;
-  $password=$req->pwd;
-    if (Auth::attempt(['email'=>$email,'password'=>$password])) {
-      return view('home');
+    $email = $req->email;
+    $password = $req->pwd;
+    // $id = DB::table('users')->select('id')->get();
+    if (Auth::attempt(['email' => $email, 'password' => $password])) {
+      //  $req->session()->put('id',$id);
+      $req->session()->put('user', $email);
+
+      if ($req->session()->has('user')) {
+
+        return view('home');
+      } else {
+        return redirect()->back();
+      }
     } else {
       return  back()->withErrors($val);
+    }
+  }
+  public function logout(Request $req)
+  {
+    if ($req->session()->has('user')) {
+
+      $req->session()->flush();
+      
+      
+      return redirect('/');
     }
   }
 }
