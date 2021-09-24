@@ -45,8 +45,12 @@ class Application extends Model
   *
   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
   */
- public function courses(): BelongsTo
+ public function course(): BelongsTo
  {
      return $this->belongsTo(Courses::class, 'course_id', 'stud_id');
  }
+
+ public function qual(){
+   $this->hasMany(Qualification::class,'qual_id');
+ } 
 }

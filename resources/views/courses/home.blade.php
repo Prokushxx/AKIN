@@ -40,7 +40,7 @@
             <a href="apply"><div class="btn btn-success"> Apply Now</div></a>
     </div>
     <div class="course-col2">
-      <h3>House Keeping</h3>
+      <h3>Accounting</h3>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
           soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>

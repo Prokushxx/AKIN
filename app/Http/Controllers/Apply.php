@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Photo;
+use App\Models\Qualification;
 use Database\Seeders\courses as SeedersCourses;
 
 // use Database\Seeders\courses;
@@ -58,7 +59,7 @@ class Apply extends Controller
     $tbl->firstname = $req->fname;
     $tbl->lastname = $req->lname;
     $tbl->gender = $req->gender;
-    $tbl->courses_id = $req->course;
+    $tbl->course_id = $req->course;
     $tbl->DOB = $req->DOB;
     $tbl->email = $req->email;
     $tbl->street = $req->street;
@@ -89,10 +90,21 @@ class Apply extends Controller
     ], [
       'required' => '*This field cannot be empty'
     ]);
+
+
     if ($validate->fails()) {
       return redirect()->back()
         ->withErrors($validate)
         ->withInput();
     }
+    Qualification::create([
+      'subject'=> $req->subject,
+      'exam_body'=> $req->exam,
+      'qualification'=> $req->qual,
+      'grade'=> $req->grade,
+      'user_id'=>auth()->user()->id,
+      'year'=> $req->year,
+    ]);
+    return redirect()->back();
   }
 }

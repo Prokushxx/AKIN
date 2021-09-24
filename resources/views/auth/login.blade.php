@@ -11,11 +11,13 @@
   <div class="container xl">
   <form action="{{ route('login.info') }}" method="post">
     @csrf
-          <input type="text" placeholder="EMAIL" value="{{ old('email') }}" name="email"/><br>
-          <span style="color: red;">@error('email'){{$message}}@enderror</span><br>
-          <input type="password" placeholder="Password"  value="{{ old('pwd') }}" name="pwd"/><br>
-          <span style="color: red;">@error('pwd'){{$message}}@enderror</span><br>
-          <input type="submit" value="Login" name="login"/>
+    <div>
+          <input type="text" placeholder="EMAIL" value="{{ old('email') }}" name="email"/>
+        </div>
+        <div> <span style="color: red;">@error('email'){{$message}}@enderror</span></div>
+          <div><input type="password" placeholder="Password"  value="{{ old('pwd') }}" name="pwd"/></div>
+          <div><span style="color: red;">@error('pwd'){{$message}}@enderror</span></div>
+          <div><input type="submit" value="Login" name="login"/></div>
     </form>
     <a href="/"><button>HOME</button></a>
   </div>

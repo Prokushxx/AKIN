@@ -62,7 +62,7 @@
   @error('parish')
   {{ $message }}  
   @enderror <br>
-  <input type="tel" name="telephone" placeholder="*telephone" value="{{ old('telephone') }}">
+  <input type="number" name="telephone" placeholder="*telephone" value="{{ old('telephone') }}">
   @error('telephone')
   {{ $message }}  
   @enderror <br>
@@ -81,7 +81,7 @@
   <input type="text" name="exam" value="" placeholder="Examination Body">
   <input type="text" name="qual" value="" placeholder="Qualifications">
   <input type="text" name="grade" value="" placeholder="Grade">
-  <input type="text" name="year" value="" placeholder="Year">
+  <input type="number" name="year" value="" placeholder="Year">
   <input type="submit" value="Submit">
 </form>
 
