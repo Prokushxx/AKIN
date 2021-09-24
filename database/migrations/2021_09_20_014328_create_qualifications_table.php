@@ -15,12 +15,13 @@ class CreateQualificationsTable extends Migration
     {
         Schema::create('qualifications', function (Blueprint $table) {
             $table->smallIncrements('qual_id');
-            $table->foreignId('id')->constrained('students','id');
+            $table->unsignedInteger('student_id');
             $table->string('subject');
             $table->string('exam_body');
             $table->string('qualification');
             $table->integer('grade');
             $table->date('year');
+            $table->foreign('student_id')->references('stud_id')->on('students');
         });
     }
 

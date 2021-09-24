@@ -135,6 +135,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>@yield('title')</title>
+ 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
@@ -147,14 +148,15 @@
       <a href="#"><img src="" alt=""></a>
       <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
+          {{ Session('user') }}
           <ul>
               <li><a href="/">HOME</a></li>
               <li><a href="courses#course">COURSES</a></li>
               <li><a href="#">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               <li><a href="#">ADMIN</a></li>
-              <li><a href="{{ route('logout') }}">LOG OUT</a></li>
-              {{ Session('user') }}
+              <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
+              
           </ul>
       </div>
       <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -169,4 +171,10 @@
 </section>
 @yield('body')
 </body>
+<script>
+  function log(){
+ document.getElementById("logout")
+ window.alert("{{ Session('user') }} Logging out?")
+  }
+</script>
 </html>

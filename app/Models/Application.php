@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class Application extends Model
 {
     use HasFactory;
     protected $table = 'students';
     
+    protected $primaryKey = 'stud_id';
     protected $fillable = [
-      'c_id',
+      'course_id',
       'TRN',
       'firstname',
       'lastname',
@@ -36,4 +39,14 @@ class Application extends Model
 //     protected function getcourses(){
 //       return $this->hasOne('App\Http\Models\Courses','c_id','id');
 //     }
+
+ /**
+  * Get the user that owns the Application
+  *
+  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+  */
+ public function courses(): BelongsTo
+ {
+     return $this->belongsTo(Courses::class, 'course_id', 'stud_id');
+ }
 }

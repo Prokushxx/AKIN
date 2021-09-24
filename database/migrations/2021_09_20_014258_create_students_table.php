@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,8 +14,8 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('c_id')->constrained('courses','c_id');
+            $table->Increments('stud_id');
+            $table->unsignedInteger('course_id');
             $table->integer('TRN');
             $table->string('firstname');
             $table->string('lastname');
@@ -28,6 +28,7 @@ class CreateStudentsTable extends Migration
             $table->string('parish');
             $table->integer('telephone');
             $table->timestamps();
+            $table->foreign('course_id')->references('c_id')->on('courses');
         });
     }
 

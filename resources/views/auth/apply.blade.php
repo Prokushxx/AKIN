@@ -62,13 +62,13 @@
   @error('parish')
   {{ $message }}  
   @enderror <br>
-  <input type="number" name="telephone" placeholder="*telephone" value="{{ old('telephone') }}">
+  <input type="tel" name="telephone" placeholder="*telephone" value="{{ old('telephone') }}">
   @error('telephone')
   {{ $message }}  
   @enderror <br>
   @if ($user = Session('user'))
   {{-- <label for="photo" value="{{ $user->username }}">Upload Photo</label><br> --}}
-  <input type="file" name = "photo" value=""><br>
+  <input type="file" name ="photo"><br>
   @endif
   <input type="submit" value="Submit">
 </form>

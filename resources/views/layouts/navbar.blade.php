@@ -153,13 +153,17 @@
               <li><a href="#">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               <li><a href="#">ADMIN</a></li>
-              <li><a href="{{ route('logout') }}">Logout</a></li>
-              
+              <li><a href="{{ route('logout') }}" onclick="log()" id="logout">Logout</a></li>
           </ul>
       </div>
       <i class="fa fa-bars" onclick="showMenu()"></i>
   </nav>
-
+<script>
+  function log(){
+ document.getElementById("logout")
+ window.alert("You have logged out")
+  }
+</script>
   @yield('body')
   <body>
     
