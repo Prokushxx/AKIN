@@ -66,8 +66,12 @@ class Register extends Controller
       $req->session()->put('user', $email);
 
       if ($req->session()->has('user')) {
-
-        return view('home');
+        if(auth()->user()->User_type == 'Admin'){
+        return redirect('admin');
+        }
+        else{
+        return redirect('/');
+        }
       } else {
         return redirect()->back();
       }
@@ -75,6 +79,9 @@ class Register extends Controller
       return  back()->withErrors($val);
     }
   }
+
+
+  //Log out function
   public function logout(Request $req)
   {
     if ($req->session()->has('user')) {

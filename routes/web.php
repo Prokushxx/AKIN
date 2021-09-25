@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Apply;
 use App\Http\Middleware\Login;
+use App\Http\Controllers\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +32,20 @@ route::post('/register',[Register::class,'store'])->name('register.save');
   route::post('/apply',[Apply::class,'store_student'])->name('student.apply');
   route::post('/apply/qual',[Apply::class,'qual_store'])->name('store.qual');
 });
-
 route::get('/logout',[Register::class,'logout'])->name('logout');
+
+route::get('/media',function(){
+  return view('media');
+});
+
+
+Route::middleware(['middleware'=> ['Admmin']])->group(function () {
+  route::get('admin',[Admin::class,'show'])->name('admin.show');
+  route::post('admin/{id}/apply',[Admin::class,'accept'])->name('admin.accept');
+  route::post('admin/{id}/apply',[Admin::class,'regect'])->name('admin.regect');
+  route::get('user',[Admin::class,'show_user'])->name('user.show');
+  route::delete('admin/{id}/user',[Admin::class,'delete'])->name('admin.delete');
+});
 
 
 

@@ -148,17 +148,22 @@
       <a href="#"><img src="" alt=""></a>
       <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
+          <div class="text-white">{{ Session('user') }}</div>
           <ul>
               <li><a href="/">HOME</a></li>
               <li><a href="courses#course">COURSES</a></li>
-              <li><a href="#">MEDIA</a></li>
+              <li><a href="/media">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               @auth()
-              <li><a href="{{ route('logout') }}" onclick="log()" id="logout">Logout</a></li>
-              @else
-              <li><a href="{{ route('logout') }}" onclick="log()" id="logout">Log In</a></li>
-              @endauth
+              @if (auth()->user()->User_type == 'Admin')
+              <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
               <li><a href="#">ADMIN</a></li>
+              @elseif (auth()->user()->User_type == 'user')
+              <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
+              @endif
+              @else
+              <li><a href="login"  id="login">LOG IN</a></li>
+              @endauth
           </ul>
       </div>
       <i class="fa fa-bars" onclick="showMenu()"></i>

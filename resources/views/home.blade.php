@@ -90,7 +90,7 @@
     }
 
     .layer:hover {
-        background: rgba(266, 0, 0, 0.7);
+        background: rgb(46, 136, 196);
     }
 
     .layer h3 {
@@ -99,7 +99,7 @@
         color: #fff;
         font-size: 26px;
         bottom: 0%;
-        left: 50%;
+        left: 0%;
         transform: translateY(-50%);
         position: absolute;
         opacity: 0;
@@ -253,19 +253,19 @@
             <div class="campus-col">
                 <img src="../IMAGES/pic6.jpg" alt="">
                 <div class="layer">
-                    <h3>LONDON</h3>
+                    <h3>STONY HILL</h3>
                 </div>
             </div>
             <div class="campus-col">
                 <img src="" alt="">
                 <div class="layer">
-                    <h3>LONDON</h3>
+                    <H3>BOYS TOWN</H3>
                 </div>
             </div>
             <div class="campus-col">
                 <img src="" alt="">
                 <div class="layer">
-                    <h3>LONDON</h3>
+                    <H3>EBONY PARK</H3>
                 </div>
             </div>
         </div>

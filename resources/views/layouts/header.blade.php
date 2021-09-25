@@ -41,14 +41,16 @@
     .nav-links ul li a {
         color: #fff;
         text-decoration: none;
-        font-size: 13px;
+        font-weight:600;   
+        font-size: 14px;
+
     }
 
     .nav-links ul li::after {
         content: '';
         width: 0%;
         height: 2px;
-        background: #f44336;
+        background: rgb(46, 136, 196);
         display: block;
         margin: auto;
         transition: 0.5s;
@@ -56,6 +58,7 @@
 
     .nav-links ul li:hover::after {
         width: 100%;
+        color: rgb(46, 136, 196);
     }
 
     .text-box {
@@ -91,9 +94,10 @@
     }
 
     .hero-btn:hover {
-        border: 1px solid #f44336;
-        background: #f44336;
+        border: 1px solid rgb(46, 136, 196);
+        background: rgb(46, 136, 196);
         transition: 1s;
+        color: #fff;
     }
 
     nav.fa {
@@ -111,7 +115,7 @@
 
         .nav-links {
             position: absolute;
-            background: #f44336;
+            background: rgb(46, 136, 196);
             height: 100vh;
             width: 200px;
             top: 0%;
@@ -148,20 +152,26 @@
       <a href="#"><img src="" alt=""></a>
       <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
-          {{ Session('user') }}
+          <div class="text-white">Welcome back <span class="text-blue-300">{{ Session('user') }}</span></div>
           <ul>
-              <li><a href="/">HOME</a></li>
-              <li><a href="courses#course">COURSES</a></li>
-              <li><a href="#">MEDIA</a></li>
-              <li><a href="#">CONTACT</a></li>
               @auth()
               @if (auth()->user()->User_type == 'Admin')
+              <li><a href="#">USERS</a></li>
+              <li><a href="#">APPLICANTS</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
               <li><a href="#">ADMIN</a></li>
               @elseif (auth()->user()->User_type == 'user')
+              <li><a href="/">HOME</a></li>
+              <li><a href="courses#course">COURSES</a></li>
+              <li><a href="/media">MEDIA</a></li>
+              <li><a href="#">CONTACT</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
               @endif
               @else
+              <li><a href="/">HOME</a></li>
+              <li><a href="courses#course">COURSES</a></li>
+              <li><a href="/media">MEDIA</a></li>
+              <li><a href="#">CONTACT</a></li>
               <li><a href="login"  id="login">LOG IN</a></li>
               @endauth
 
@@ -169,13 +179,32 @@
       </div>
       <i class="fa fa-bars" onclick="showMenu()"></i>
   </nav>
+  @auth()
+
+  @if (auth()->user()->User_type == 'Admin')
   <div class="text-box">
-      <h1>H.E.A.R.T</h1>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
-      <a href="login" class="hero-btn">LOGIN</a>
-      <a href="register" class="hero-btn">REGISTER</a><br><br>
-      <a href="courses#course" class="hero-btn">APPLY</a>
-  </div>
+    <h1 class="text-blue-400">ADMIN DASHBOARD</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
+    <a href="#" class="hero-btn">VIEW USERS</a>
+    <a href="#" class="hero-btn">VIEW APPLICANTS</a><br><br>
+</div>
+  @elseif (auth()->user()->User_type == 'user')
+  <div class="text-box">
+    <h1>H.E.A.R.T</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
+    <a href="register" class="hero-btn">REGISTER</a><br><br>
+    <a href="courses#course" class="hero-btn">APPLY</a>
+</div>
+@endif
+  @else
+  <div class="text-box">
+    <h1>H.E.A.R.T</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
+    <a href="login" class="hero-btn">LOGIN</a>
+    <a href="register" class="hero-btn">REGISTER</a><br><br>
+    <a href="courses#course" class="hero-btn">APPLY</a>
+</div>  
+  @endauth
 </section>
 @yield('body')
 </body>
