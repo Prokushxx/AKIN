@@ -222,7 +222,7 @@
           <div class="text-white">{{ Session('user') }}</div>
           <ul>
               <li><a href="/">HOME</a></li>
-              <li><a href="courses#course">COURSES</a></li>
+              <li><a href="{{ route('course.show') }}">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               @auth()

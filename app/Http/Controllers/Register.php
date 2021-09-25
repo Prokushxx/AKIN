@@ -88,7 +88,6 @@ class Register extends Controller
 
       $req->session()->flush();
       
-      
       return redirect('/');
     }
   }

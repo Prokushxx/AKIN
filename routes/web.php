@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Apply;
 use App\Http\Middleware\Login;
-use App\Http\Controllers\Admin;
+use App\Http\Controllers\Admincontroller;
+use App\Http\Controllers\Coursecontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-route::view('/courses','courses\home');
+// route::view('/courses','courses\home');
 route::get('/login',[Register::class,'show_login']);
 route::post('/login',[Register::class,'login'])->name('login.info');
 route::get('/register',[Register::class,'show']);
@@ -39,15 +40,13 @@ route::get('/media',function(){
 });
 
 
-Route::middleware(['middleware'=> ['Admmin']])->group(function () {
-  route::get('admin',[Admin::class,'show'])->name('admin.show');
-  route::post('admin/{id}/apply',[Admin::class,'accept'])->name('admin.accept');
-  route::post('admin/{id}/apply',[Admin::class,'regect'])->name('admin.regect');
-  route::get('user',[Admin::class,'show_user'])->name('user.show');
-  route::delete('admin/{id}/user',[Admin::class,'delete'])->name('admin.delete');
+Route::group(['middleware'=> ['admin']], function () {
+route::get('admin',[Admincontroller::class,'show'])->name('admin.show');
+route::post('admin/{id}/apply',[Admincontroller::class,'accept'])->name('admin.accept');
+route::post('admin/{id}/apply',[Admincontroller::class,'regect'])->name('admin.reject');
+route::get('user',[Admincontroller::class,'show_user'])->name('user.show');
+route::delete('admin/{id}/user',[Admincontroller::class,'delete'])->name('admin.delete');
 });
 
-
-
-
+route::get('course',[Coursecontroller::class,'show_courses'])->name('course.show');
 

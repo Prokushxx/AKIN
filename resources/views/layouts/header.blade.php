@@ -162,14 +162,14 @@
               <li><a href="#">ADMIN</a></li>
               @elseif (auth()->user()->User_type == 'user')
               <li><a href="/">HOME</a></li>
-              <li><a href="courses#course">COURSES</a></li>
+              <li><a href="{{ route('course.show') }}">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
               @endif
               @else
               <li><a href="/">HOME</a></li>
-              <li><a href="courses#course">COURSES</a></li>
+              <li><a href="{{ route('course.show') }}">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               <li><a href="login"  id="login">LOG IN</a></li>
@@ -186,13 +186,14 @@
     <h1 class="text-blue-400">ADMIN DASHBOARD</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
     <a href="#" class="hero-btn">VIEW USERS</a>
-    <a href="#" class="hero-btn">VIEW APPLICANTS</a><br><br>
+    <a href="#" class="hero-btn">VIEW COURSES</a><br><br>
+    <a href="#" class="hero-btn">VIEW APPLICANTS</a>
+
 </div>
   @elseif (auth()->user()->User_type == 'user')
   <div class="text-box">
     <h1>H.E.A.R.T</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
-    <a href="register" class="hero-btn">REGISTER</a><br><br>
     <a href="courses#course" class="hero-btn">APPLY</a>
 </div>
 @endif
@@ -212,6 +213,6 @@
   function log(){
  document.getElementById("logout")
  window.alert("{{ Session('user') }} Logging out?")
-  }
+}
 </script>
 </html>

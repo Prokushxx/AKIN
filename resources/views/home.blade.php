@@ -224,19 +224,19 @@
 
         <div class="row">
             <div class="course-col">
-                <h3>Intermediate</h3>
+                <h3>Web Development</h3>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
                     soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>
             </div>
             <div class="course-col">
-                <h3>Degree</h3>
+                <h3>Accounting</h3>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
                     soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>
             </div>
             <div class="course-col">
-                <h3>Post Graduation</h3>
+                <h3>Network Support</h3>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
                     soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>
@@ -272,35 +272,8 @@
 
 
     </section>
-    <!-- FACILITIES -->
-    {{-- <section class="facilities">
-        <h1>Our Facilities</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-        <div class="row">
-            <div class="facilities-col">
-                <img src="" alt="">
-                <h3>World Class Library</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Optio eaque natus quam vitae distinctio velit illo perferendis repudiandae eos id ipsum omnis quis modi, rem deleniti at impedit non corporis?</p>
-            </div>
-            <div class="facilities-col">
-                <img src="" alt="">
-                <h3>World Class Library</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Optio eaque natus quam vitae distinctio velit illo perferendis repudiandae eos id ipsum omnis quis modi, rem deleniti at impedit non corporis?</p>
-            </div>
-            <div class="facilities-col">
-                <img src="" alt="">
-                <h3>World Class Library</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Optio eaque natus quam vitae distinctio velit illo perferendis repudiandae eos id ipsum omnis quis modi, rem deleniti at impedit non corporis?</p>
-            </div>
-        </div>
-    </section> --}}
-
-
-    <!-- TESTIMONIALS -->
+    
     <section class="testimonials">
         <h1>What our students say</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
