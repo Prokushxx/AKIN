@@ -47,10 +47,12 @@ class Application extends Model
   */
  public function course(): BelongsTo
  {
-     return $this->belongsTo(Courses::class, 'course_id', 'stud_id');
+     return $this->belongsTo(Courses::class,'course_id');
  }
 
  public function qual(){
-   $this->hasMany(Qualification::class,'qual_id');
+
+   $this->hasMany(Qualification::class);
+
  } 
 }

@@ -10,7 +10,7 @@ class Courses extends Model
 {
     use HasFactory;
     protected $primaryKey = 'c_id';
-
+    
     protected $fillable = [
       'c_name'
     ];

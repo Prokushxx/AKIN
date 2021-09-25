@@ -156,16 +156,19 @@
           <ul>
               @auth()
               @if (auth()->user()->User_type == 'Admin')
+
               <li><a href="#">USERS</a></li>
-              <li><a href="#">APPLICANTS</a></li>
+              <li><a href="{{ route('applicants.show') }}">APPLICANTS</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
-              <li><a href="#">ADMIN</a></li>
+
               @elseif (auth()->user()->User_type == 'user')
+
               <li><a href="/">HOME</a></li>
               <li><a href="{{ route('course.show') }}">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
+              
               @endif
               @else
               <li><a href="/">HOME</a></li>
@@ -187,14 +190,14 @@
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
     <a href="#" class="hero-btn">VIEW USERS</a>
     <a href="#" class="hero-btn">VIEW COURSES</a><br><br>
-    <a href="#" class="hero-btn">VIEW APPLICANTS</a>
+    <a href="{{ route('applicants.show') }}" class="hero-btn">VIEW APPLICANTS</a>
 
 </div>
   @elseif (auth()->user()->User_type == 'user')
   <div class="text-box">
     <h1>H.E.A.R.T</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
-    <a href="courses#course" class="hero-btn">APPLY</a>
+    <a href="{{ route('course.show') }}" class="hero-btn">APPLY</a>
 </div>
 @endif
   @else
@@ -203,7 +206,7 @@
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
     <a href="login" class="hero-btn">LOGIN</a>
     <a href="register" class="hero-btn">REGISTER</a><br><br>
-    <a href="courses#course" class="hero-btn">APPLY</a>
+    <a href="{{ route('course.show') }}" class="hero-btn">APPLY</a>
 </div>  
   @endauth
 </section>

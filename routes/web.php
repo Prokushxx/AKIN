@@ -18,35 +18,34 @@ use App\Http\Controllers\Coursecontroller;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', function () {return view('home'); });
+route::get('course',[Coursecontroller::class,'show_courses'])->name('course.show');
+route::get('/logout',[Register::class,'logout'])->name('logout');
+route::get('/media',function(){return view('media');});
 
-// route::view('/courses','courses\home');
+//Validate and Store Registration
 route::get('/login',[Register::class,'show_login']);
 route::post('/login',[Register::class,'login'])->name('login.info');
 route::get('/register',[Register::class,'show']);
 route::post('/register',[Register::class,'store'])->name('register.save');
 
+//Application Middleware
   Route::group(['middleware'=>['login']], function () {
   route::get('/apply',[Apply::class,'show_apply']);
   route::post('/apply',[Apply::class,'store_student'])->name('student.apply');
   route::post('/apply/qual',[Apply::class,'qual_store'])->name('store.qual');
 });
-route::get('/logout',[Register::class,'logout'])->name('logout');
 
-route::get('/media',function(){
-  return view('media');
-});
-
-
+//Admin Middleware 
 Route::group(['middleware'=> ['admin']], function () {
-route::get('admin',[Admincontroller::class,'show'])->name('admin.show');
-route::post('admin/{id}/apply',[Admincontroller::class,'accept'])->name('admin.accept');
-route::post('admin/{id}/apply',[Admincontroller::class,'regect'])->name('admin.reject');
-route::get('user',[Admincontroller::class,'show_user'])->name('user.show');
-route::delete('admin/{id}/user',[Admincontroller::class,'delete'])->name('admin.delete');
+route::get('/admin',[Admincontroller::class,'show'])->name('admin.show');
+//VIEW APPLICATIONS
+route::get('/applicants',[Admincontroller::class,'show_applicants'])->name('applicants.show');
+route::post('/admin/{id}/apply',[Admincontroller::class,'accept'])->name('admin.accept');
+route::post('/admin/{id}/apply',[Admincontroller::class,'regect'])->name('admin.reject');
+//VIEW USERS
+route::get('/users',[Admincontroller::class,'show_user'])->name('user.show');
+route::post('/user/{id}',[Admincontroller::class,'if_active'])->name('user.status');
 });
 
-route::get('course',[Coursecontroller::class,'show_courses'])->name('course.show');
 
