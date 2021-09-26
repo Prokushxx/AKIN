@@ -146,8 +146,8 @@
 
               @auth()
               @if (auth()->user()->User_type == 'Admin')
-              <li><a href="/">HOME</a></li>
-              <li><a href="#">USERS</a></li>
+              <li><a href="{{ route('admin.show') }}">HOME</a></li>
+              <li><a href="{{ route('user.show') }}">USERS</a></li>
               <li><a href="{{ route('applicants.show') }}">APPLICANTS</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
 

@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Apply;
-use App\Http\Middleware\Login;
 use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\Coursecontroller;
 
@@ -41,11 +40,13 @@ Route::group(['middleware'=> ['admin']], function () {
 route::get('/admin',[Admincontroller::class,'show'])->name('admin.show');
 //VIEW APPLICATIONS
 route::get('/applicants',[Admincontroller::class,'show_applicants'])->name('applicants.show');
+route::get('/applicants/{id}',[Admincontroller::class,'applicants_info'])->name('applicants.info');
 route::post('/admin/{id}/apply',[Admincontroller::class,'accept'])->name('admin.accept');
 route::post('/admin/{id}/apply',[Admincontroller::class,'regect'])->name('admin.reject');
 //VIEW USERS
 route::get('/users',[Admincontroller::class,'show_user'])->name('user.show');
-route::post('/user/{id}',[Admincontroller::class,'if_active'])->name('user.status');
+route::post('/user/{id}',[Admincontroller::class,'if_active'])->name('user.active');
+route::post('/user/{id}',[Admincontroller::class,'if_notactive'])->name('user.notactive');
 });
 
 

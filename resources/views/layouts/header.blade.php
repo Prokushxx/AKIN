@@ -5,15 +5,15 @@
         margin: 0;
         padding: 0%;
     }
-
     .header {
         min-height: 100vh;
         width: 100%;
-        background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url();
-        background-position: center;
-        background-size: cover;
+        background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(../IMAGES/OIP1.jpeg);
+        background-position:;
+        background-size:cover;
         position: relative;
     }
+
 
     nav {
         display: flex;
@@ -157,7 +157,7 @@
               @auth()
               @if (auth()->user()->User_type == 'Admin')
 
-              <li><a href="#">USERS</a></li>
+              <li><a href="{{ route('user.show') }}">USERS</a></li>
               <li><a href="{{ route('applicants.show') }}">APPLICANTS</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
 
@@ -188,7 +188,7 @@
   <div class="text-box">
     <h1 class="text-blue-400">ADMIN DASHBOARD</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
-    <a href="#" class="hero-btn">VIEW USERS</a>
+    <a href="{{ route('user.show') }}" class="hero-btn">VIEW USERS</a>
     <a href="#" class="hero-btn">VIEW COURSES</a><br><br>
     <a href="{{ route('applicants.show') }}" class="hero-btn">VIEW APPLICANTS</a>
 

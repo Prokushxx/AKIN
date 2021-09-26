@@ -46,6 +46,7 @@
     <th>CONTACT INFO</th>
     <th>COURSE</th>
   </tr>
+  
   @foreach ($applicants as $apply)
   <tr>
    
@@ -53,7 +54,7 @@
     <td>{{ $apply->email }}</td>
     <td>1876-{{ $apply->telephone }}</td>
     <td>{{ $apply->c_name }}</td>
-    <td ><a href="#" class=" bg-none text-blue-200">View Applicant</a> </td>
+    <td ><a href="{{ route('applicants.info',$apply->stud_id) }}" class=" bg-none text-blue-200">View Applicant</a> </td>
    
   </tr>
   @endforeach
