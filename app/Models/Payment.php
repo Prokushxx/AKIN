@@ -15,8 +15,7 @@ class Payment extends Model
       'paymentstatus',
       'cardnumber',
       'cvc',
-      'expirationmonth',
-      'expirationyear',
+      'expirationdate',
     ];
 
     protected function user ()

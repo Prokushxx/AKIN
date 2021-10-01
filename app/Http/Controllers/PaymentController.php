@@ -28,7 +28,9 @@ class PaymentController extends Controller
       'expirationdate'=> $req->expirationdate,
     ]);
 
-    // Application::find($id);
+    Application::where('email', auth()->user()->email)->update([
+    'paymentstatus'=>'paid',
+    ]);
     
     return back();
   }

@@ -35,7 +35,7 @@ class Apply extends Controller
         'fname' => 'required',
         'lname' => 'required',
         'gender' => 'required',
-        'course' => 'required',
+        'courses' => 'required',
         'DOB' => 'required',
         'email' => 'required|unique:students,email',
         'street' => 'required',
@@ -43,12 +43,13 @@ class Apply extends Controller
         'country' => 'required',
         'parish' => 'required',
         'telephone' => 'required',
+        // 'photo'=>'unique:pics,'
       ],
       [
-        'required' => '*This field cannot be empty',
         'email.unique' => 'This field already exists'
       ]
     );
+  
 
     if ($val->fails()) {
       return redirect()->back()
@@ -62,7 +63,7 @@ class Apply extends Controller
     $tbl->gender = $req->gender;
     $tbl->course_id = $req->courses;
     $tbl->DOB = $req->DOB;
-    $tbl->email = $req->email;
+    $tbl->email = auth()->user()->email;
     $tbl->street = $req->street;
     $tbl->town = $req->town;
     $tbl->country = $req->country;

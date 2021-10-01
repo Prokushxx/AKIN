@@ -21,7 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->foreign('course_id')->references('c_id')->on('courses');      
             $table->integer('cardnumber');
             $table->integer('cvc');
-            $table->integer('expirationdate');
+            $table->text('expirationdate');
             $table->timestamps();
         });
     }

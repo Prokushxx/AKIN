@@ -24,6 +24,7 @@ class Application extends Model
       'street',
       'town',
       'country',
+      'paymentstatus',
       'parish',
       'telephone',
     ];

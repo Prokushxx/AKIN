@@ -44,12 +44,20 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="fname" class="block text-sm font-medium text-black">First Name</label>
-                                <input type="text" name="fname" placeholder="First Name" id="fname" required                                    class="mt-1 focus:ring-indigo-500 text-black-300  focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                            </div>
+                                <input type="text" name="fname" placeholder="First Name" id="fname" required  class="mt-1 focus:ring-indigo-500 text-black-300  focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <span class="text-red-500"> @error('fname')
+                                  {{ $message }}
+                              @enderror
+                          </span>
+                              </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="lname" class="block text-sm font-medium text-gray-700">Last Name</label>
                                 <input type="text" name="lname" placeholder="Last Name" id="lname" required
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <span class="text-red-500"> @error('lname')
+                                      {{ $message }}
+                                  @enderror
+                              </span>
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
@@ -232,16 +240,23 @@
                 <h2 class="text-lg">Your Payment Information</h2>
             </div>
             <div class="w-full">
-              @foreach ($courses as $course)
-              <form action="{{ route('payment.post',$course->c_id) }}" method="POST">
-              @endforeach
-              @csrf
+              
+              <form action="{{ route('payment.post') }}" method="POST">
+                @csrf
+                
+                <Label for="course">Please Select A Course</Label>
+                <Select name="course">
+                  @foreach ($courses as $course)
+                  <option value="{{ $course->c_id }}">{{ $course->c_name }} -><br> ${{ $course->price }} </option>
+                  @endforeach
+                </Select>
+
               <input type="hidden" value="{{ $course->c_id }}">
             <label for="payment" class="block text-sm mb-2">Credit Card</label>
             <div class="flex">
-              <input type="text" name="cardnumber" id="payment" class="w-5/6 flex-1 text-sm bg-grey-light text-grey-darkest rounded-l p-3 focus:outline-none" placeholder="Card Number">
-              <input type="text" name="expirationdate" id="payment" class="w-1/6 inline-block text-sm bg-grey-light text-grey-darkest p-3 focus:outline-none" placeholder="MM / YY">
-              <input type="text" name="cvc" id="payment" class="w-1/6 inline-block text-sm bg-grey-light text-grey-darkest rounded-r p-3 focus:outline-none" placeholder="CVC">
+              <input type="text" name="cardnumber" id="payment" class="w-5/6 flex-1 text-sm bg-grey-light text-grey-darkest rounded-l p-3 focus:outline-none" placeholder="Card Number" required>
+              <input type="text" name="expirationdate" id="payment" class="w-1/6 inline-block text-sm bg-grey-light text-grey-darkest p-3 focus:outline-none" placeholder="MM / YY" required>
+              <input type="text" name="cvc" id="payment" class="w-1/6 inline-block text-sm bg-grey-light text-grey-darkest rounded-r p-3 focus:outline-none" placeholder="CVC" required>
             </div>
           </div>
         </div>

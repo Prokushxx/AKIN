@@ -16,7 +16,7 @@ class CreatePicTable extends Migration
     {
         Schema::create('pics', function (Blueprint $table) {
             $table->smallIncrements('pic_id');
-            $table->unsignedInteger('users_id');
+            $table->unsignedInteger('users_id')->unique();
             $table->string('pic_name');
             $table->foreign('users_id')->references('id')->on('users');
             $table->string('pic_location');

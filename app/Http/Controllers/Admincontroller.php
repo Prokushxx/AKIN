@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use Illuminate\Support\Facades\DB;
 use App\Models\Courses;
+use App\Models\Qualification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\Finder\Finder;
@@ -32,15 +33,19 @@ class Admincontroller extends Controller
         // $students = Application::Find($id);
         $students = DB::table('students')
         ->join('users','students.email','=','users.email')
-        ->join('qualifications','qualifications.user_id','=','users.id')
+        // ->join('qualifications','qualifications.user_id','=','users.id')
         ->join('courses','courses.c_id','=','students.course_id')
         ->join('pics','pics.users_id','=','users.id')
         ->where('stud_id',$id)
         ->select('*')
         ->get();
 
-   
-        return view('admin.studentinfo',['students'=>$students]);
+        $student = Application::where('stud_id', $id)
+        ->join('users', 'students.email', '=', 'users.email')
+        ->get();  
+        $qualify = Qualification::where('user_id', $student[0]->id)->get();
+
+        return view('admin.studentinfo',compact('students','qualify'));
     }
 
     public function show_user(){
