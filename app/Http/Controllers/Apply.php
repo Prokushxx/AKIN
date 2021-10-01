@@ -22,6 +22,7 @@ class Apply extends Controller
   {
   $courses= Courses::with('stud')->get();
   $studentpic = User::with('pics')->get();
+  // $stud = Application::find($id);
 
     return view('auth.apply',compact('courses','studentpic'));
   }
@@ -59,7 +60,7 @@ class Apply extends Controller
     $tbl->firstname = $req->fname;
     $tbl->lastname = $req->lname;
     $tbl->gender = $req->gender;
-    $tbl->course_id = $req->course;
+    $tbl->course_id = $req->courses;
     $tbl->DOB = $req->DOB;
     $tbl->email = $req->email;
     $tbl->street = $req->street;
@@ -105,6 +106,7 @@ class Apply extends Controller
       'user_id'=>auth()->user()->id,
       'year'=> $req->year,
     ]);
+
     return redirect()->back();
   }
 }

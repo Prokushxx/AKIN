@@ -27,10 +27,12 @@ class CreateStudentsTable extends Migration
             $table->string('country');
             $table->string('parish');
             $table->integer('telephone');
+            $table->text('paymentstatus')->default('pending');
+            $table->foreign('course_id')->references('c_id')->on('courses')->onDelete('cascade');
+
             $table->timestamps();
-            $table->foreign('course_id')->references('c_id')->on('courses');
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.

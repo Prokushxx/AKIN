@@ -17,10 +17,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-      if(Auth::user()->User_type == 'Admin'){
-      
+      if(auth()->user()->User_type == 'Admin'){
         return $next($request);
       }
+      else
+      {
       return redirect('/');
     }
+  }
 }

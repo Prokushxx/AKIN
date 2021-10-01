@@ -17,15 +17,19 @@ class Courseseeder extends Seeder
         DB::table('courses')->insert([
         [
           'c_name'=>'Network Support',
+          'price'=>'50000'
         ],
         [
           'c_name'=>'Customer Service',
+        'price'=>'60000'
         ],
         [
           'c_name'=>'Administrative Assistance',
+          'price'=>'8000'
         ],
         [
           'c_name'=>'Accounting',
+          'price'=>'6000',
         ],
         ]);
     }

@@ -3,6 +3,7 @@
 @section('title','COURSES')
 @section('body')
 
+  
 <!-- course -->
 <section class="course" id="course">
   <h1>Course we Offer</h1>
@@ -12,6 +13,7 @@
     @foreach ($courses as $course)
       <div class="course-col">
         <h3>{{ $course->c_name }}</h3>
+        <h5>${{ $course->price }}</h5>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Quia aliquid illo unde amet quod? Sit modi consequuntur accusantium
             soluta eius dignissimos aliquid, consequatur delectus aperiam voluptas unde facilis nam aliquam!</p>

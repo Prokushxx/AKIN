@@ -149,7 +149,7 @@
 
 <section class="header">
   <nav>
-      <a href="#"><img src="" alt=""></a>
+      <a href="#"><img src="../IMAGES/HEART.png" alt=""></a>
       <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
           <div class="text-white">Welcome back <span class="text-blue-300">{{ Session('user') }}</span></div>
@@ -158,15 +158,16 @@
               @if (auth()->user()->User_type == 'Admin')
 
               <li><a href="{{ route('user.show') }}">USERS</a></li>
+              <li><a href="{{ route('show.course') }}">COURSES</a></li>
               <li><a href="{{ route('applicants.show') }}">APPLICANTS</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
 
               @elseif (auth()->user()->User_type == 'user')
 
               <li><a href="/">HOME</a></li>
-              <li><a href="{{ route('course.show') }}">COURSES</a></li>
+              <li><a href="{{ route('course.show') }}#course">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
-              <li><a href="#">CONTACT</a></li>
+              <li><a href="#contact">CONTACT</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
               
               @endif
@@ -174,8 +175,8 @@
               <li><a href="/">HOME</a></li>
               <li><a href="{{ route('course.show') }}">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
-              <li><a href="#">CONTACT</a></li>
-              <li><a href="login"  id="login">LOG IN</a></li>
+              <li><a href="#contact">CONTACT</a></li>
+              <li><a href="{{ route('login') }}"  id="login">LOG IN</a></li>
               @endauth
 
           </ul>
@@ -189,7 +190,7 @@
     <h1 class="text-blue-400">ADMIN DASHBOARD</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
     <a href="{{ route('user.show') }}" class="hero-btn">VIEW USERS</a>
-    <a href="#" class="hero-btn">VIEW COURSES</a><br><br>
+    <a href="{{ route('show.course') }}" class="hero-btn">VIEW COURSES</a><br><br>
     <a href="{{ route('applicants.show') }}" class="hero-btn">VIEW APPLICANTS</a>
 
 </div>
@@ -197,16 +198,16 @@
   <div class="text-box">
     <h1>H.E.A.R.T</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
-    <a href="{{ route('course.show') }}" class="hero-btn">APPLY</a>
+    <a href="{{ route('course.show') }}#course" class="hero-btn">APPLY</a>
 </div>
 @endif
   @else
   <div class="text-box">
     <h1>H.E.A.R.T</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam id, provident beatae inventore fugit, cum reiciendis, perspiciatis iure repellat officia recusandae? Saepe velit totam dicta delectus odit molestiae explicabo perferendis.</p>
-    <a href="login" class="hero-btn">LOGIN</a>
+    <a href="{{ route('login') }}" class="hero-btn">LOGIN</a>
     <a href="register" class="hero-btn">REGISTER</a><br><br>
-    <a href="{{ route('course.show') }}" class="hero-btn">APPLY</a>
+    <a href="{{ route('course.show') }}#course" class="hero-btn">APPLY</a>
 </div>  
   @endauth
 </section>

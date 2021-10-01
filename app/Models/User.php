@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
       return $this->hasOne(User::class,'id');
     }
+
+    public function testimonial(){
+      return $this->hasMany(Testimonial::class);
+    }
 }

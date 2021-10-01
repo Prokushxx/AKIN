@@ -9,7 +9,7 @@
     .header {
         min-height: 80vh;
         width: 100%;
-        background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url();
+        background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(../IMAGES/weed.jpg);
         background-position: center;
         background-size: cover;
         position: relative;
@@ -222,7 +222,7 @@
           <div class="text-white">{{ Session('user') }}</div>
           <ul>
               <li><a href="/">HOME</a></li>
-              <li><a href="{{ route('course.show') }}">COURSES</a></li>
+              <li><a href="{{ route('course.show') }}#course">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               @auth()
@@ -233,7 +233,7 @@
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
               @endif
               @else
-              <li><a href="login"  id="login">LOG IN</a></li>
+              <li><a href="{{ route('login') }}"  id="login">LOG IN</a></li>
               @endauth
               
           </ul>

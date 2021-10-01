@@ -12,7 +12,7 @@
     min-height: 100vh;
     width: 100%;
     background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(../IMAGES/OIP1.jpeg);
-    background-position:;
+    /* background-position: absolute; */
     background-size:cover;
     /* position: relative; */
   }
@@ -58,7 +58,7 @@ td {
     <th>Status</th>
   </tr>  
   @foreach ($students as $student)
-  <img src="{{ asset('/storage/PHOTO/'. $student->pic_name)}}" alt="{{ $student->pic_name }}" class="ml-40 max-w-sm bg-blue-600">
+  <img src="{{ asset( $student->pic_location)}}" alt="{{ $student->pic_name }}" class="ml-40 max-w-sm bg-blue-600">
   <tr>
     <td>{{ $student->firstname }}</td>
     <td>{{ $student->lastname }}</td>
@@ -91,6 +91,5 @@ td {
 </tr>
 @endforeach
 </table>
-
 
 @endsection

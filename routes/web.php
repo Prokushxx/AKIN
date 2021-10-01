@@ -1,10 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Apply;
 use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\Coursecontroller;
+use App\Http\Controllers\PaymentController;
+use App\Models\Testimonial;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +21,18 @@ use App\Http\Controllers\Coursecontroller;
 |
 */
 
-Route::get('/', function () {return view('home'); });
-route::get('course',[Coursecontroller::class,'show_courses'])->name('course.show');
+Route::get('/', function () {
+  $comments=Testimonial::with('user')->get();
+  return view('home',['comments'=>$comments]);
+ });
+
+route::get('/course',[Coursecontroller::class,'show_courses'])->name('course.show');
 route::get('/logout',[Register::class,'logout'])->name('logout');
 route::get('/media',function(){return view('media');});
 
 //Validate and Store Registration
-route::get('/login',[Register::class,'show_login']);
-route::post('/login',[Register::class,'login'])->name('login.info');
+route::get('/login',[Register::class,'show_login'])->name('login');
+route::post('/login/info',[Register::class,'login'])->name('login.info');
 route::get('/register',[Register::class,'show']);
 route::post('/register',[Register::class,'store'])->name('register.save');
 
@@ -33,6 +41,9 @@ route::post('/register',[Register::class,'store'])->name('register.save');
   route::get('/apply',[Apply::class,'show_apply']);
   route::post('/apply',[Apply::class,'store_student'])->name('student.apply');
   route::post('/apply/qual',[Apply::class,'qual_store'])->name('store.qual');
+  //Comments
+  route::post('/apply/comment',[TestimonialController::class,'add_comment'])->name('add.comment');
+  route::post('/checkout',[PaymentController::class,'paymentPost'])->name('payment.post');
 });
 
 //Admin Middleware 
@@ -45,8 +56,15 @@ route::post('/admin/{id}/apply',[Admincontroller::class,'accept'])->name('admin.
 route::post('/admin/{id}/apply',[Admincontroller::class,'regect'])->name('admin.reject');
 //VIEW USERS
 route::get('/users',[Admincontroller::class,'show_user'])->name('user.show');
-route::post('/user/{id}',[Admincontroller::class,'if_active'])->name('user.active');
-route::post('/user/{id}',[Admincontroller::class,'if_notactive'])->name('user.notactive');
+route::post('/user/{id}active',[Admincontroller::class,'if_active'])->name('user.active');
+route::post('/user/{id}/notactive',[Admincontroller::class,'if_notactive'])->name('user.notactive');
+//VIEW COURSES
+route::get('course/show',[Admincontroller::class,'show_course'])->name('show.course');
+route::post('course/add',[Admincontroller::class,'add_course'])->name('add.course');
+route::delete('course/{id}/delete',[Admincontroller::class,'delete_course'])->name('delete.course');
 });
 
-
+// route::get('/checkout',[PaymentController::class,'payment'])->name('payment.show');
+// route::get('/back',function(){
+//    return back();
+// })->name('back');

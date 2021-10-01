@@ -7,7 +7,6 @@
     }
 
 
-
     nav {
         display: flex;
         padding: 2% 6%;
@@ -153,17 +152,17 @@
 
               @elseif (auth()->user()->User_type == 'user')
               <li><a href="/">HOME</a></li>
-              <li><a href="{{ route('course.show') }}">COURSES</a></li>
+              <li><a href="{{ route('course.show') }}#course">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
               @endif
               @else
               <li><a href="/">HOME</a></li>
-              <li><a href="{{ route('course.show') }}">COURSES</a></li>
+              <li><a href="{{ route('course.show') }}#course">COURSES</a></li>
               <li><a href="/media">MEDIA</a></li>
               <li><a href="#">CONTACT</a></li>
-              <li><a href="login"  id="login">LOG IN</a></li>
+              <li><a href="{{ route('login') }}"  id="login">LOG IN</a></li>
               @endauth
           </ul>
       </div>

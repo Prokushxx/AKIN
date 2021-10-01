@@ -12,7 +12,8 @@ class Courses extends Model
     protected $primaryKey = 'c_id';
     
     protected $fillable = [
-      'c_name'
+      'c_name',
+      'price'
     ];
 
     /**

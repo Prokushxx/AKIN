@@ -25,6 +25,25 @@
         padding: 10px;
     }
 
+    .hero-btn2 {
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 12px 34px;
+        font-size: 13px;
+        background: transparent;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .hero-btn2:hover {
+        border: 3px solid gray;
+        background: white;
+        transition: 1s;
+        color: rgb(46, 136, 196);
+    }
+
     .row {
         margin-top: 5%;
         display: flex;
@@ -121,6 +140,7 @@
 
     .facilities-col img {
         width: 100%;
+        position: fixed;
         border-radius: 10px;
     }
 
@@ -146,7 +166,7 @@
         border-radius: 10px;
         margin-bottom: 5%;
         text-align: center;
-        background: #fff3f3;
+        background:rgb(46, 136, 196) ;
         padding: 25px;
         cursor: pointer;
         display: flex;
@@ -161,6 +181,8 @@
 
     .testimonials-col p {
         padding: 0%;
+        color: #fff;
+        font-size: 15px; 
     }
 
     .testimonials-col h3 {
@@ -178,7 +200,8 @@
     .cta {
         margin: 100px auto;
         width: 80%;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), url());
+        background-color: rgb(46, 136, 196);
+        background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7), url(..\IMAGES\IMG1.jpg));
         background-position: center;
         background-size: cover;
         border-radius: 10px;
@@ -210,12 +233,52 @@
     margin-top: 20px;
     font-weight: 600;
 }
+
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  .animated.faster {
+    -webkit-animation-duration: 500ms;
+    animation-duration: 500ms;
+  }
+
+  .fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+  }
+
+  .fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
 </style>
 
 
 @section('body')
-  
-
 
     <!-- course -->
     <section class="course">
@@ -251,21 +314,21 @@
 
         <div class="row">
             <div class="campus-col">
-                <img src="../IMAGES/pic6.jpg" alt="">
+                <img src="../IMAGES/Dormitory-Block.jpg" alt="">
                 <div class="layer">
-                    <h3>STONY HILL</h3>
+                    <h3>DORMITORY</h3>   
                 </div>
             </div>
             <div class="campus-col">
-                <img src="" alt="">
+                <img src="../IMAGES/IMG_3750.jpg" alt="">
                 <div class="layer">
-                    <H3>BOYS TOWN</H3>
+                    <H3>VOLLEYBALL COURT</H3>
                 </div>
             </div>
             <div class="campus-col">
-                <img src="" alt="">
+                <img src="../IMAGES/IMG_2399.jpg" alt="">
                 <div class="layer">
-                    <H3>EBONY PARK</H3>
+                    <H3>FOOTBALL FIELD</H3>
                 </div>
             </div>
         </div>
@@ -274,50 +337,185 @@
     </section>
 
     
-    <section class="testimonials">
+    {{-- <section class="testimonials">
         <h1>What our students say</h1>
+
+        
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <div class="row">
-            <div class="testimonials-col">
-                <img src="" alt="">
-                <div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel officia eius sapiente? Architecto, eaque repellat cupiditate culpa quae quos eligendi adipisci, esse, possimus dolorem pariatur delectus explicabo distinctio aspernatur!</p>
-                    <h4>PROKUSHxx</h4>
-                </div>
+          @foreach ($comments as $comment)
+          <div class="testimonials-col">
+            <div>
+              <p>{{ $comment->comments }}</p>
+              <h4>{{ $comment->username }}</h4>
             </div>
-            <div class="testimonials-col">
-                <img src="" alt="">
-                <div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel officia eius sapiente? Architecto, eaque repellat cupiditate culpa quae quos eligendi adipisci, esse, possimus dolorem pariatur delectus explicabo distinctio aspernatur!</p>
-                    <h4>XAVIER</h4>
-                </div>
-            </div>
-            <div class="testimonials-col">
-                <img src="" alt="">
-                <div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel officia eius sapiente? Architecto, eaque repellat cupiditate culpa quae quos eligendi adipisci, esse, possimus dolorem pariatur delectus explicabo distinctio aspernatur!</p>
-                    <h4>AKINYENE</h4>
-                </div>
-            </div>
+          </div>
+          @endforeach
         </div>
 
+        @auth()
+          
+        @if (auth()->user()->User_type == 'user')
+        
+        
+        <form action="{{ route('add.comment') }}" method="POST">
+          @csrf
+          <textarea name="comment" id="comments" cols="50" rows="5" required></textarea>
+          <input type="submit" value= "Send">
+        </form>
+        
+        @endif
+        @endauth
 
-
-    </section>
+    </section> --}}
 
 
     <!-- Call to Action  -->
     <section class="cta">
         <h1>Enroll for our various online courses Anywhere Locally</h1>
-        <a href="" class="hero-btn">Contact Us</a>
+        {{-- <a href="#" class="hero-btn2">Contact Us</a> --}}
+
+        <div>
+          <button onclick="openModal('main-modal')" class='hero-btn2'>Contact Us</button>
+        </div>
+        
+        <div class="main-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
+          <div class="border border-blue-500 shadow-lg modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+              <!--Title-->
+              <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold text-gray-500">Add Caretaker</p>
+                <div class="modal-close cursor-pointer z-50" onclick="modalClose('main-modal')">
+                  <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18">
+                    <path
+                      d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                    </path>
+                  </svg>
+                </div>
+              </div>
+              <!--Body-->
+              <div class="my-5 mr-5 ml-5 flex justify-center">
+                          <form action="#" method="POST" id="add_caretaker_form"  class="w-full">
+                              <div class="">
+                                  <div class="">
+                                      <label for="names" class="text-md text-gray-600">Full Names</label>
+                                  </div>
+                                  <div class="">
+                                      <input type="text" id="names" autocomplete="off" name="names" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Example. John Doe">
+                                  </div>
+                                  <div class="">
+                                      <label for="phone" class="text-md text-gray-600">Phone Number</label>
+                                  </div>
+                                  <div class="">
+                                      <input type="text" id="phone" autocomplete="off" name="phone" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Example. 0729400426">
+                                  </div>
+                                  <div class="">
+                                      <label for="id_number" class="text-md text-gray-600">ID Number</label>
+                                  </div>
+                                  <div class="">
+                                      <input type="number" id="id_number" autocomplete="off" name="id_number" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Caretaker's ID number">
+                                  </div>
+                              </div>
+                          </form>
+              </div>
+              <!--Footer-->
+              <div class="flex justify-end pt-2 space-x-14">
+                <button
+                  class="px-4 bg-gray-200 p-3 rounded text-black hover:bg-gray-300 font-semibold" onclick="modalClose('main-modal')">Cancel</button>
+                <button
+                  class="px-4 bg-blue-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" onclick="validate_form(document.getElementById('add_caretaker_form'))">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="another-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
+          <div class="border border-blue-500 shadow-lg modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+              <!--Title-->
+              <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold text-gray-500">Edit Caretaker</p>
+                <div class="modal-close cursor-pointer z-50" onclick="modalClose('another-modal')">
+                  <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18">
+                    <path
+                      d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                    </path>
+                  </svg>
+                </div>
+              </div>
+              <!--Body-->
+              <div class="my-5 mr-5 ml-5 flex justify-center">
+                          <form action="#" method="POST" id="add_caretaker_form"  class="w-full">
+                              <div class="">
+                                  <div class="">
+                                      <label for="names" class="text-md text-gray-600">Full Names</label>
+                                  </div>
+                                  <div class="">
+                                      <input type="text" id="names" autocomplete="off" name="names" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Example. John Doe">
+                                  </div>
+                                  <div class="">
+                                      <label for="phone" class="text-md text-gray-600">Phone Number</label>
+                                  </div>
+                                  <div class="">
+                                      <input type="text" id="phone" autocomplete="off" name="phone" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Example. 0729400426">
+                                  </div>
+                                  <div class="">
+                                      <label for="id_number" class="text-md text-gray-600">ID Number</label>
+                                  </div>
+                                  <div class="">
+                                      <input type="number" id="id_number" autocomplete="off" name="id_number" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Caretaker's ID number">
+                                  </div>
+                              </div>
+                          </form>
+              </div>
+              <!--Footer-->
+              <div class="flex justify-end pt-2 space-x-14">
+                <button
+                  class="px-4 bg-gray-200 p-3 rounded text-black hover:bg-gray-300 font-semibold" onclick="modalClose('another-modal')">Cancel</button>
+                <button
+                  class="px-4 bg-blue-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" onclick="validate_form(document.getElementById('add_caretaker_form'))">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <script>
+              all_modals = ['main-modal', 'another-modal']
+              all_modals.forEach((modal)=>{
+                  const modalSelected = document.querySelector('.'+modal);
+                  modalSelected.classList.remove('fadeIn');
+                  modalSelected.classList.add('fadeOut');
+                  modalSelected.style.display = 'none';
+              })
+              const modalClose = (modal) => {
+                  const modalToClose = document.querySelector('.'+modal);
+                  modalToClose.classList.remove('fadeIn');
+                  modalToClose.classList.add('fadeOut');
+                  setTimeout(() => {
+                      modalToClose.style.display = 'none';
+                  }, 500);
+              }
+        
+              const openModal = (modal) => {
+                  const modalToOpen = document.querySelector('.'+modal);
+                  modalToOpen.classList.remove('fadeOut');
+                  modalToOpen.classList.add('fadeIn');
+                  modalToOpen.style.display = 'flex';
+              }
+          
+        </script>
+
+
     </section>
 
     <!-- Footer -->
 
-    <section class="footer">
+    <section class="footer" id="contact">
         <h4>About us</h4>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Sequi ipsa iure sunt inventore beatae. Nulla fugit nisi, facilis, <br> reprehenderit quasi doloribus alias iure at voluptates nobis eos recusandae neque id.</p>
+            Sequi ipsa iure sunt inventore beatae. Nulla fugit nisi, facilis, <br> reprehenderit quasi doloribus alias iure at voluptates br
+           <br> nobis eos recusandae neque id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam laborum officia eveniet, dicta explicabo dolorum et veniam laudantium <br> soluta amet accusantium voluptates nisi architecto quis molestiae a temporibus sed saepe!</p>
     </section>
 
     <script>
@@ -334,3 +532,8 @@
 </body>
 @endsection
 </html>
+
+<!-- component -->
+<!-- component -->
+
+
