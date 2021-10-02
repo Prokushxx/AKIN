@@ -42,9 +42,7 @@ class Apply extends Controller
         'town' => 'required',
         'country' => 'required',
         'parish' => 'required',
-        'telephone' => 'required',
-        // 'photo'=>'unique:pics,'
-      ],
+        'telephone' => 'required',      ],
       [
         'email.unique' => 'This field already exists'
       ]
@@ -89,7 +87,8 @@ class Apply extends Controller
       'qual' => 'required',
       'grade' => 'required',
       'year' => 'required',
-    ], [
+    ], 
+    [
       'required' => '*This field cannot be empty'
     ]);
 
