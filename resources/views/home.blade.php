@@ -306,7 +306,6 @@
             </div>
         </div>
     </section>
-
     <!-- campus -->
     <section class="campus">
         <h1>Our Campus</h1>
@@ -331,16 +330,12 @@
                     <H3>FOOTBALL FIELD</H3>
                 </div>
             </div>
-        </div>
-
-
+          </div>
     </section>
 
     
-    {{-- <section class="testimonials">
+    <section class="testimonials">
         <h1>What our students say</h1>
-
-        
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <div class="row">
           @foreach ($comments as $comment)
@@ -360,14 +355,14 @@
         
         <form action="{{ route('add.comment') }}" method="POST">
           @csrf
-          <textarea name="comment" id="comments" cols="50" rows="5" required></textarea>
-          <input type="submit" value= "Send">
+          <textarea name="comment" id="comments" cols="50" rows="5" required class="bg-blue-200"></textarea>
+          <input type="submit" value= "Send" class="bg-blue-200">
         </form>
         
         @endif
         @endauth
 
-    </section> --}}
+    </section>
 
 
     <!-- Call to Action  -->
@@ -378,13 +373,14 @@
         <div>
           <button onclick="openModal('main-modal')" class='hero-btn2'>Contact Us</button>
         </div>
+        {{-- </div>
         
         <div class="main-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
-          <div class="border border-blue-500 shadow-lg modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
+          <div class="border border-blue-500 modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
             <div class="modal-content py-4 text-left px-6">
               <!--Title-->
               <div class="flex justify-between items-center pb-3">
-                <p class="text-2xl font-bold text-gray-500">Add Caretaker</p>
+                <p class="text-2xl font-bold text-gray-500">Contact us via</p>
                 <div class="modal-close cursor-pointer z-50" onclick="modalClose('main-modal')">
                   <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                     viewBox="0 0 18 18">
@@ -399,43 +395,57 @@
                           <form action="#" method="POST" id="add_caretaker_form"  class="w-full">
                               <div class="">
                                   <div class="">
-                                      <label for="names" class="text-md text-gray-600">Full Names</label>
+                                      <h6>INSTAGRAM</h6>
+                                      <i class="fa-instagram-square h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                                      <label for="names" class="text-md text-gray-600">myamber.group</label>
                                   </div>
                                   <div class="">
-                                      <input type="text" id="names" autocomplete="off" name="names" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Example. John Doe">
+                                  <i class="fa-instagram-square h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                                      <label for="names" class="text-md text-gray-600">heartnstatrust</label>
+                                      </div>
+                                  <div class="">
+                                      <h6>Whatsapp</h6>
+                                  <i class="fa-whatsapp h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                                      <label for="names" class="text-md text-gray-600">1876-875-2415</label>
                                   </div>
                                   <div class="">
-                                      <label for="phone" class="text-md text-gray-600">Phone Number</label>
-                                  </div>
+                                      <h6>Telephone</h6>
+                                  <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                                      <label for="names" class="text-md text-gray-600">906-3487-9</label>      
+                                </div>
                                   <div class="">
-                                      <input type="text" id="phone" autocomplete="off" name="phone" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Example. 0729400426">
-                                  </div>
+                                  <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                                      <label for="names" class="text-md text-gray-600">906-3613</label>      
+                                </div>
+                                
+                                <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                                      <label for="names" class="text-md text-gray-600">906-4530</label>      
+                                </div>
                                   <div class="">
-                                      <label for="id_number" class="text-md text-gray-600">ID Number</label>
-                                  </div>
-                                  <div class="">
-                                      <input type="number" id="id_number" autocomplete="off" name="id_number" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Caretaker's ID number">
+                                      <h6>Email</h6>
+                                  <i class="fa-mail h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                                      <label for="names" class="text-md text-gray-600">info@heart-nta.org</label>
                                   </div>
                               </div>
                           </form>
               </div>
               <!--Footer-->
               <div class="flex justify-end pt-2 space-x-14">
-                <button
+                <!-- <button
                   class="px-4 bg-gray-200 p-3 rounded text-black hover:bg-gray-300 font-semibold" onclick="modalClose('main-modal')">Cancel</button>
                 <button
-                  class="px-4 bg-blue-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" onclick="validate_form(document.getElementById('add_caretaker_form'))">Confirm</button>
+                  class="px-4 bg-blue-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" onclick="validate_form(document.getElementById('add_caretaker_form'))">Confirm</button> -->
               </div>
             </div>
           </div>
         </div>
-          <div class="another-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
-          <div class="border border-blue-500 shadow-lg modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
+          {{-- <div class="another-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
+          <div class="border border-blue-500 modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
             <div class="modal-content py-4 text-left px-6">
               <!--Title-->
               <div class="flex justify-between items-center pb-3">
                 <p class="text-2xl font-bold text-gray-500">Edit Caretaker</p>
-                <div class="modal-close cursor-pointer z-50" onclick="modalClose('another-modal')">
+                <div class="modal-close cursor-pointer z-50" onclick="modalClose('another-odal')">
                   <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                     viewBox="0 0 18 18">
                     <path
@@ -444,33 +454,9 @@
                   </svg>
                 </div>
               </div>
-              <!--Body-->
-              <div class="my-5 mr-5 ml-5 flex justify-center">
-                          <form action="#" method="POST" id="add_caretaker_form"  class="w-full">
-                              <div class="">
-                                  <div class="">
-                                      <label for="names" class="text-md text-gray-600">Full Names</label>
-                                  </div>
-                                  <div class="">
-                                      <input type="text" id="names" autocomplete="off" name="names" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Example. John Doe">
-                                  </div>
-                                  <div class="">
-                                      <label for="phone" class="text-md text-gray-600">Phone Number</label>
-                                  </div>
-                                  <div class="">
-                                      <input type="text" id="phone" autocomplete="off" name="phone" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Example. 0729400426">
-                                  </div>
-                                  <div class="">
-                                      <label for="id_number" class="text-md text-gray-600">ID Number</label>
-                                  </div>
-                                  <div class="">
-                                      <input type="number" id="id_number" autocomplete="off" name="id_number" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="Caretaker's ID number">
-                                  </div>
-                              </div>
-                          </form>
-              </div>
+              <!--Body--> --}}
               <!--Footer-->
-              <div class="flex justify-end pt-2 space-x-14">
+              {{-- <div class="flex justify-end pt-2 space-x-14">
                 <button
                   class="px-4 bg-gray-200 p-3 rounded text-black hover:bg-gray-300 font-semibold" onclick="modalClose('another-modal')">Cancel</button>
                 <button
@@ -479,8 +465,8 @@
             </div>
           </div>
         </div>
-        
-        <script>
+         --}}
+        {{-- <script>
               all_modals = ['main-modal', 'another-modal']
               all_modals.forEach((modal)=>{
                   const modalSelected = document.querySelector('.'+modal);
@@ -504,7 +490,7 @@
                   modalToOpen.style.display = 'flex';
               }
           
-        </script>
+        </script> --}}
 
 
     </section>
@@ -514,7 +500,7 @@
     <section class="footer" id="contact">
         <h4>About us</h4>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Sequi ipsa iure sunt inventore beatae. Nulla fugit nisi, facilis, <br> reprehenderit quasi doloribus alias iure at voluptates br
+            Sequi ipsa iure sunt inventore beatae. Nulla fugit nisi, facilis, <br> reprehenderit quasi doloribus alias iure at voluptates 
            <br> nobis eos recusandae neque id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam laborum officia eveniet, dicta explicabo dolorum et veniam laudantium <br> soluta amet accusantium voluptates nisi architecto quis molestiae a temporibus sed saepe!</p>
     </section>
 

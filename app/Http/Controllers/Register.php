@@ -85,14 +85,14 @@ class Register extends Controller
       return  back()->withErrors(['pwd' => 'Password Incorrect']);
     }
   }
+
   //Log out function
   public function logout(Request $req)
   {
     if ($req->session()->has('user')) {
-
+dd($req);
       $req->session()->flush();
-
-      return redirect()->route('login');
+      return redirect('/login');  
     }
   }
 }

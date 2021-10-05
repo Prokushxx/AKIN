@@ -44,7 +44,7 @@ class Apply extends Controller
         'parish' => 'required',
         'telephone' => 'required',      ],
       [
-        'email.unique' => 'This field already exists'
+        'email.unique' => 'This field already exists' 
       ]
     );
   
@@ -108,5 +108,37 @@ class Apply extends Controller
     ]);
 
     return redirect()->back();
+  }
+  public function show_update($id){
+    $students = DB::table('students')
+    ->join('users','users.email','=','students.email')
+    ->select('*')
+    ->where('users.id',$id)
+    ->get();
+    return view('auth.editstud',['students'=>$students]);
+  }
+
+  public function add_update(Request $request,$id){
+    $updatestudent = Application::where('stud_id',$id)->update([
+      'street'=>$request->street,
+      'town'=>$request->town,
+      'country'=>$request->country,
+      'parish'=>$request->parish,
+      'telephone'=>$request->telephone,
+    ]);
+    
+    // DB::table('students')
+    // ->join('users','users.email','=','students.email')
+    // ->select('*')
+    // ->where('users.id',$id)
+    // ->update([
+    //     'street'=>$request->street,
+    //     'town'=>$request->town,
+    //     'country'=>$request->country,
+    //     'parish'=>$request->parish,
+    //     'telephone'=>$request->telephone
+    //   ]);
+
+    return redirect()->route('update.show',auth()->user()->id);
   }
 }

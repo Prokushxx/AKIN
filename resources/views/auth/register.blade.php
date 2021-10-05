@@ -30,6 +30,7 @@
       <span class="text-red-500">@error ('conpwd'){{ $message }} @enderror</span> <br>
       <a href="{{ url()->previous() }}" class="text-white hover:bg-red-700 transition-500 bg-red-500 px-2 py-1 rounded mb-2 no-underline">Go back</a>
       <input type="submit" value="Register" class=" ml-2 bg-blue-600 px-3 py-2  text-white hover:bg-blue-900 "><br>
+      <div class="pt-2 hover:text-white px-2 py-1 rounded-md bg-yellow-500 w-16 justify-center"><a href="/" class="">HOME</a></div>
       <div class="pt-2 hover:text-indigo-800"><a href="{{ route('login') }}">Already have an account?</a></div>
     </form>
     </div>

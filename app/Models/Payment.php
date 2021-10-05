@@ -18,6 +18,13 @@ class Payment extends Model
       'expirationdate',
     ];
 
+    protected $hidden = [
+      'cardnumber',
+      'cvc',
+      'expirationdate',
+    ];
+
+
     protected function user ()
     {
       return $this->belongsTo(User::class);

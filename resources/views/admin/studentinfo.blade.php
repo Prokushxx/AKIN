@@ -7,15 +7,15 @@
 
 @section('body')
 <style>
-
   .header {
     min-height: 100vh;
     width: 100%;
     background-image: linear-gradient(rgba(4, 9, 30, 0.9), rgba(4, 9, 30, 0.7)), url(../IMAGES/OIP1.jpeg);
     /* background-position: absolute; */
-    background-size:cover;
+    background-size: cover;
     /* position: relative; */
   }
+
   .table4 {
     position: absolute;
     top: 30%;
@@ -23,26 +23,26 @@
     transform: translate(-50%, -50%);
     width: 90%;
   }
-  
+
   th,
   tr,
   td {
     border: 1px solid #3498db;
-padding: 10px 10px;
-color: white;
-}
+    padding: 10px 10px;
+    color: white;
+  }
 
-.td2 {
-  color: white;
-}
+  .td2 {
+    color: white;
+  }
 
-.tbl2{
-  position: fixed;
+  .tbl2 {
+    position: fixed;
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-}
+  }
 </style>
 
 
@@ -57,7 +57,7 @@ color: white;
     <th>Course</th>
     <th>Payment Status</th>
     <th>Status</th>
-  </tr>  
+  </tr>
   @foreach ($students as $student)
   {{-- <img src="{{ asset( $student->pic_location)}}" alt="{{ $student->pic_name }}" class="ml-40 max-w-sm bg-blue-600"> --}}
   <tr>
@@ -69,9 +69,20 @@ color: white;
     <td>{{ $student->town}}</td>
     <td>{{ $student->c_name}}</td>
     <td>{{ $student->paymentstatus}}</td>
-    <td> accept <br> reject </td>
-    </tr>
-  
+    <td>{{ $student->status}}</td>
+    <td> 
+      <form action="{{route('admin.accept',$student->stud_id)}}" method="POST">
+        @csrf
+        <input type="hidden" name="accept" value="ACCEPTED" >
+        <input type="submit" class="bg-green-500 py-1 mb-2 px-2 text-white font-semibold hover:bg-green-300" value="ACCEPT">
+      </form>
+      <form action="{{route('admin.reject',$student->stud_id)}}" method="POST">
+        @csrf
+        <input type="hidden" name="reject" value="REJECTED">
+        <input type="submit" value="REJECT" class="bg-red-500 py-1 px-2 text-white font-semibold hover:bg-red-300">
+      </form> </td>
+  </tr>
+
 </table>
 
 @endforeach
@@ -88,39 +99,36 @@ color: white;
 @foreach ($qualify as $qual)
 <tr>
   <td>{{ $qual->subject }}</td>
-  <td>{{ $qual->exam_body }}</td>
-  <td>{{ $qual->qualification }}</td>
-  <td>{{ $qual->grade }}</td>
-  <td>{{ $qual->year }}</td>
+<td>{{ $qual->exam_body }}</td>
+<td>{{ $qual->qualification }}</td>
+<td>{{ $qual->grade }}</td>
+<td>{{ $qual->year }}</td>
 </tr>
 @endforeach
 </table> --}}
 
 <div class="container ">
-	<table class="text-left w-full tbl2   mb-8  ">
-		<thead class="flex text-white w-full">
-			<tr class="flex w-full mb-4">
+  <table class="text-left w-full tbl2   mb-8  ">
+    <thead class="flex text-white w-full">
+      <tr class="flex w-full mb-4">
         <th class="p-1 w-1/4">Subject</th>
         <th class="p-1 w-1/4">Exam Body</th>
         <th class="p-1 w-1/4">Qualification</th>
         <th class="p-1 w-1/4">Grade</th>
         <th class="p-1 w-1/4">Year</th>
-			</tr>
-		</thead>
+      </tr>
+    </thead>
     <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 40vh">
-    @foreach ($qualify as $qual)
-			<tr class="flex w-full mb-4 ">
-				<td class="p-1 w-1/4">{{ $qual->subject }}</td>
-				<td class="p-1 w-1/4">{{ $qual->exam_body }}</td>
-				<td class="p-1 w-1/4">{{ $qual->qualification }}</td>
-				<td class="p-1 w-1/4">{{ $qual->grade }}</td>
-				<td class="p-1 w-1/4">{{ $qual->year }}</td>
+      @foreach ($qualify as $qual)
+      <tr class="flex w-full mb-4 ">
+        <td class="p-1 w-1/4">{{ $qual->subject }}</td>
+        <td class="p-1 w-1/4">{{ $qual->exam_body }}</td>
+        <td class="p-1 w-1/4">{{ $qual->qualification }}</td>
+        <td class="p-1 w-1/4">{{ $qual->grade }}</td>
+        <td class="p-1 w-1/4">{{ $qual->year }}</td>
       </tr>
       @endforeach
-		</tbody>
-	</table>
+    </tbody>
+  </table>
 </div>
 @endsection
-
-
-

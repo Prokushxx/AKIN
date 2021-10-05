@@ -52,6 +52,7 @@ class Admincontroller extends Controller
 
      $user = User::where('User_type','user')->paginate(3);
      return view('admin.user',['user'=>$user]);
+
     }
 
     public function if_active(Request $req, $id){
@@ -97,5 +98,22 @@ class Admincontroller extends Controller
        else{  
          return redirect()->back()->withErrors($validate);
        }
+     }
+
+     public function accept(Request $request,$id){
+      $studentaccept = Application::find($id);
+      // dd($studentaccept);
+      $studentaccept->status = 'Accepted';
+      $studentaccept->save();
+
+      return redirect()->back();
+     }
+
+     public function regect(Request $request, $id){
+      $studentreject = Application::find($id);
+      $studentreject->status = 'Rejected';
+      $studentreject->save();
+
+      return redirect()->back();
      }
 }

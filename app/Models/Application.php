@@ -26,6 +26,7 @@ class Application extends Model
       'country',
       'paymentstatus',
       'parish',
+      'status',
       'telephone',
     ];
 

@@ -7,7 +7,7 @@
         min-height: 100vh;
         width: 100%;
         background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(../IMAGES/OIP1.jpeg);
-        background-position: ;
+        /* background-position: ; */
         background-size: cover;
         position: relative;
     }
@@ -147,6 +147,7 @@
                             </div>
                         </div>
                          </form>
+                         <h6 class="text-red-400 pt-6">PLEASE SAVE INFORMATION BEFORE ADDING QUALIFICATIONS</h6>
 
 
 

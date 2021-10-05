@@ -219,12 +219,13 @@
       <a href="#"><img src="" alt=""></a>
       <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
-          <div class="text-white">{{ Session('user') }}</div>
-          <ul>
+          @auth()<div class="text-white"><a href="{{route('update.show',auth()->user()->id)}}">{{ Session('user') }}</a></div>
+          @endauth<ul>
               <li><a href="/">HOME</a></li>
               <li><a href="{{ route('course.show') }}#course">COURSES</a></li>
-              <li><a href="/media">MEDIA</a></li>
-              <li><a href="#">CONTACT</a></li>
+              <li><div>
+                <button onclick="openModal('main-modal')" class='text-white text-sm '>CONTACT US</button>
+              </div>  </li>
               @auth()
               @if (auth()->user()->User_type == 'Admin')
               <li><a href="{{ route('logout') }}" onclick="log()" id="logout">LOG OUT</a></li>
@@ -247,7 +248,122 @@
 
   </div>
 </section>
+<div class="main-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
+  <div class="border border-blue-500 shadow-lg modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
+    <div class="modal-content py-4 text-left px-6">
+      <!--Title-->
+      <div class="flex justify-between items-center pb-3">
+        <p class="text-2xl font-bold text-gray-500">Contact us via</p>
+        <div class="modal-close cursor-pointer z-50" onclick="modalClose('main-modal')">
+          <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+            viewBox="0 0 18 18">
+            <path
+              d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+            </path>
+          </svg>
+        </div>
+      </div>
+      <!--Body-->
+      <div class="my-5 mr-5 ml-5 flex justify-center">
+                  <form action="#" method="POST" id="add_caretaker_form"  class="w-full">
+                      <div class="">
+                          <div class="">
+                              <h6>INSTAGRAM</h6>
+                              <i class="fa-instagram-square h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                              <label for="names" class="text-md text-gray-600">myamber.group</label>
+                          </div>
+                          <div class="">
+                          <i class="fa-instagram-square h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                              <label for="names" class="text-md text-gray-600">heartnstatrust</label>
+                              </div>
+                          <div class="">
+                              <h6>Whatsapp</h6>
+                          <i class="fa-whatsapp h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                              <label for="names" class="text-md text-gray-600">1876-875-2415</label>
+                          </div>
+                          <div class="">
+                              <h6>Telephone</h6>
+                          <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                              <label for="names" class="text-md text-gray-600">906-3487-9</label>      
+                        </div>
+                          <div class="">
+                          <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                              <label for="names" class="text-md text-gray-600">906-3613</label>      
+                        </div>
+                        
+                        <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                              <label for="names" class="text-md text-gray-600">906-4530</label>      
+                        </div>
+                          <div class="">
+                              <h6>Email</h6>
+                          <i class="fa-mail h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
+                              <label for="names" class="text-md text-gray-600">info@heart-nta.org</label>
+                          </div>
+                      </div>
+                  </form>
+      </div>
+      <!--Footer-->
+      <div class="flex justify-end pt-2 space-x-14">
+        <!-- <button
+          class="px-4 bg-gray-200 p-3 rounded text-black hover:bg-gray-300 font-semibold" onclick="modalClose('main-modal')">Cancel</button>
+        <button
+          class="px-4 bg-blue-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" onclick="validate_form(document.getElementById('add_caretaker_form'))">Confirm</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="another-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.7);">
+  <div class="border border-blue-500 shadow-lg modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
+    <div class="modal-content py-4 text-left px-6">
+      <!--Title-->
+      <div class="flex justify-between items-center pb-3">
+        <p class="text-2xl font-bold text-gray-500">Edit Caretaker</p>
+        <div class="modal-close cursor-pointer z-50" onclick="modalClose('another-modal')">
+          <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+            viewBox="0 0 18 18">
+            <path
+              d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+            </path>
+          </svg>
+        </div>
+      </div>
+      <!--Body-->
+      <!--Footer-->
+      <div class="flex justify-end pt-2 space-x-14">
+        <button
+          class="px-4 bg-gray-200 p-3 rounded text-black hover:bg-gray-300 font-semibold" onclick="modalClose('another-modal')">Cancel</button>
+        <button
+          class="px-4 bg-blue-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" onclick="validate_form(document.getElementById('add_caretaker_form'))">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script>
+      all_modals = ['main-modal', 'another-modal']
+      all_modals.forEach((modal)=>{
+          const modalSelected = document.querySelector('.'+modal);
+          modalSelected.classList.remove('fadeIn');
+          modalSelected.classList.add('fadeOut');
+          modalSelected.style.display = 'none';
+      })
+      const modalClose = (modal) => {
+          const modalToClose = document.querySelector('.'+modal);
+          modalToClose.classList.remove('fadeIn');
+          modalToClose.classList.add('fadeOut');
+          setTimeout(() => {
+              modalToClose.style.display = 'none';
+          }, 500);
+      }
+
+      const openModal = (modal) => {
+          const modalToOpen = document.querySelector('.'+modal);
+          modalToOpen.classList.remove('fadeOut');
+          modalToOpen.classList.add('fadeIn');
+          modalToOpen.style.display = 'flex';
+      }
+  
+</script>
 @yield('body')
 
 

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Welcomemail extends Mailable
+class Contactmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,6 +28,6 @@ class Welcomemail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->markdown('email.mailview');
     }
 }
