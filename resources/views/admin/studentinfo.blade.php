@@ -18,7 +18,7 @@
 
   .table4 {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
@@ -28,7 +28,7 @@
   tr,
   td {
     border: 1px solid #3498db;
-    padding: 10px 10px;
+    padding: 7px 10px;
     color: white;
   }
 
@@ -38,7 +38,7 @@
 
   .tbl2 {
     position: fixed;
-    top: 75%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;

@@ -7,6 +7,7 @@ use App\Http\Controllers\Register;
 use App\Http\Controllers\Apply;
 use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\Coursecontroller;
+use App\Http\Controllers\Mailing;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\XML;
 use App\Mail\Contactmail;
@@ -27,8 +28,8 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-  new Contactmail();
-  mail::to('takinyene@gmail.com')->send(new Contactmail());
+  // new Contactmail();
+  // mail::to('takinyene@gmail.com')->send(new Contactmail());
   $comments=Testimonial::with('user')->get();
   return view('home',['comments'=>$comments]);
  });
@@ -74,7 +75,9 @@ route::delete('course/{id}/delete',[Admincontroller::class,'delete_course'])->na
 });
 //XML CONFIGURATION
 // route::get('/studentxml',[XML::class,'xml'])->name('xml');
-  route::get('contact',function(){
-  mail::to('takinyene@gmail.com')->send(new Contactmail());
-  return new Contactmail();
-});
+//   route::get('contact',function(){
+//   mail::to('takinyene@gmail.com')->send(new Contactmail());
+//   return new Contactmail();
+// });
+
+route::post('mail',[Mailing::class,'send_mail'])->name('send.mail');

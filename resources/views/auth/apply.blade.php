@@ -172,7 +172,7 @@
                     <div class="">
                       <label for=" qual" class=" text-sm font-medium text-gray-700">
                         Qualifications</label><br>
-                        <input type=" text" name="qual" placeholder="3" id="qual" autocomplete="family-name" value="{{ old('qual') }}"
+                        <input type=" text" name="qual" placeholder="" id="qual" autocomplete="family-name" value="{{ old('qual') }}"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-00 bg-gray-00 border-4 bg-opacity-40 py-1 shadow-sm sm:text-sm border-blue-300 rounded-md">
                     </div>
 
@@ -214,7 +214,7 @@
                   <div class="">
                     <label for=" subjects" class=" text-sm font-medium text-gray-700">
                       Qualifications</label><br>
-                      <input type=" text" name="qual" placeholder="3" id="qual" autocomplete="family-name"
+                      <input type=" text" name="qual" placeholder="" id="qual" autocomplete="family-name"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-00 bg-gray-00 border-4 bg-opacity-40 py-1 shadow-sm sm:text-sm border-blue-300 rounded-md">
                   </div>
 

@@ -90,9 +90,10 @@ class Register extends Controller
   public function logout(Request $req)
   {
     if ($req->session()->has('user')) {
-dd($req);
+
       $req->session()->flush();
       return redirect('/login');  
     }
+    return redirect('login');
   }
 }

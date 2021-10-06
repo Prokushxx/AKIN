@@ -18,7 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->Integer('course_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('course_id')->references('c_id')->on('courses');      
+            $table->foreign('course_id')->references('c_id')->on('courses')->onDelete('cascade');      
             $table->integer('cardnumber');
             $table->integer('cvc');
             $table->text('expirationdate');

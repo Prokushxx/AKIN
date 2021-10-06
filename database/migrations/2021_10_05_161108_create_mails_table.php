@@ -15,10 +15,12 @@ class CreateMailsTable extends Migration
     {
         Schema::create('mails', function (Blueprint $table) {
             $table->id();
+            $table->text('email');
+            $table->text('message');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

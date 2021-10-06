@@ -17,7 +17,7 @@
   }
   table {
     position: absolute;
-    top: 35%;
+    top: 41%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
@@ -33,7 +33,7 @@ color: #3498db;
 
 td {
     border: 1px solid #3498db;
-padding: 10px 10px;
+padding: 7px 10px;
 color: white;
 }
 

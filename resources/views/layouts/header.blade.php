@@ -223,7 +223,7 @@
     <div class="modal-content py-4 text-left px-6">
       <!--Title-->
       <div class="flex justify-between items-center pb-3">
-        <p class="text-2xl font-bold text-gray-500">Contact us via</p>
+        <p class="text-2xl font-bold text-gray-500">Contact us</p>
         <div class="modal-close cursor-pointer z-50" onclick="modalClose('main-modal')">
           <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
             viewBox="0 0 18 18">
@@ -236,21 +236,25 @@
       <!--Body-->
       <div class="my-5 mr-5 ml-5 flex justify-center">
 
-                  <form action="#" method="POST" id="add_caretaker_form"  class="w-full">
-                    @component('mail::message')
-                    # Introduction
-                    
-                    The body of your message.
-                    
-                    @component('mail::button', ['url' => ''])
-                    Button Text
-                    @endcomponent
-                    
-                    Thanks,<br>
-                    {{ config('app.name') }}
-                    @endcomponent
-                  </form>
-                  
+                  <form action="{{ route('send.mail') }}" method="POST" class="w-full">
+                    @csrf
+                    <div class="">
+                      <div class="">
+                          <label for="phone" class="text-md text-gray-600">Enter your Email</label>
+                      </div>
+                      <div class="">
+                          <input type="email" id="phone" autocomplete="off" name="email" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="example@gmail.com" required>
+                      </div>
+                      <div class="">
+                          <label for="id_number" class="text-md text-gray-600">Message</label>
+                      </div>
+                      <div class="">
+                      <textarea name="message" id="" cols="40" rows="10" class=" w-full border-2 border-gray-300 mb-5 rounded-md" required></textarea>    
+                      </div>
+                  <input type="submit" value="Send" class="bg-blue-500 rounded text-white py-2 px-3 w-40 ml-24 hover:bg-blue-600">
+                    </div>
+                </form>
+
       </div>
       <!--Footer-->
       <div class="flex justify-end pt-2 space-x-14">

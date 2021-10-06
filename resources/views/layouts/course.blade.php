@@ -216,7 +216,7 @@
 
 <section class="header">
   <nav>
-      <a href="#"><img src="" alt=""></a>
+    <a href="#"><img src="../IMAGES/HEART.png" alt=""></a>
       <div class="nav-links" id="navLinks">
           <i class="fa fa-times" onclick="hideMenu()"></i>
           @auth()<div class="text-white"><a href="{{route('update.show',auth()->user()->id)}}">{{ Session('user') }}</a></div>
@@ -253,7 +253,7 @@
     <div class="modal-content py-4 text-left px-6">
       <!--Title-->
       <div class="flex justify-between items-center pb-3">
-        <p class="text-2xl font-bold text-gray-500">Contact us via</p>
+        <p class="text-2xl font-bold text-gray-500">Contact us</p>
         <div class="modal-close cursor-pointer z-50" onclick="modalClose('main-modal')">
           <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
             viewBox="0 0 18 18">
@@ -265,42 +265,24 @@
       </div>
       <!--Body-->
       <div class="my-5 mr-5 ml-5 flex justify-center">
-                  <form action="#" method="POST" id="add_caretaker_form"  class="w-full">
-                      <div class="">
-                          <div class="">
-                              <h6>INSTAGRAM</h6>
-                              <i class="fa-instagram-square h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
-                              <label for="names" class="text-md text-gray-600">myamber.group</label>
-                          </div>
-                          <div class="">
-                          <i class="fa-instagram-square h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
-                              <label for="names" class="text-md text-gray-600">heartnstatrust</label>
-                              </div>
-                          <div class="">
-                              <h6>Whatsapp</h6>
-                          <i class="fa-whatsapp h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
-                              <label for="names" class="text-md text-gray-600">1876-875-2415</label>
-                          </div>
-                          <div class="">
-                              <h6>Telephone</h6>
-                          <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
-                              <label for="names" class="text-md text-gray-600">906-3487-9</label>      
-                        </div>
-                          <div class="">
-                          <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
-                              <label for="names" class="text-md text-gray-600">906-3613</label>      
-                        </div>
-                        
-                        <i class="fa-phone h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
-                              <label for="names" class="text-md text-gray-600">906-4530</label>      
-                        </div>
-                          <div class="">
-                              <h6>Email</h6>
-                          <i class="fa-mail h-3 p-6 w-full pt-4 mb-5 rounded-md" aria-hidden="true"></i>
-                              <label for="names" class="text-md text-gray-600">info@heart-nta.org</label>
-                          </div>
-                      </div>
-                  </form>
+        <form action="{{ route('send.mail') }}" method="POST" class="w-full">
+          @csrf
+          <div class="">
+            <div class="">
+                <label for="phone" class="text-md text-gray-600">Enter your Email</label>
+            </div>
+            <div class="">
+                <input type="email" id="phone" autocomplete="off" name="email" class="h-3 p-6 w-full border-2 border-gray-300 mb-5 rounded-md" placeholder="example@gmail.com" required>
+            </div>
+            <div class="">
+                <label for="id_number" class="text-md text-gray-600">Message</label>
+            </div>
+            <div class="">
+            <textarea name="message" id="" cols="40" rows="10" class=" w-full border-2 border-gray-300 mb-5 rounded-md" required></textarea>    
+            </div>
+        <input type="submit" value="Send" class="bg-blue-500 rounded text-white py-2 px-3 w-40 ml-24 hover:bg-blue-600">
+          </div>
+      </form>
       </div>
       <!--Footer-->
       <div class="flex justify-end pt-2 space-x-14">
