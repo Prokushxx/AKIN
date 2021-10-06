@@ -158,7 +158,7 @@
           <ul>
               @auth()
               @if (auth()->user()->User_type == 'Admin')
-              <!-- <li><a href="#">Download XML</a></li> -->
+              <li><a href="{{ route('xmlxml.download') }}">Download XML</a></li> 
               <li><a href="{{ route('user.show') }}">USERS</a></li>
               <li><a href="{{ route('show.course') }}">COURSES</a></li>
               <li><a href="{{ route('applicants.show') }}">APPLICANTS</a></li>

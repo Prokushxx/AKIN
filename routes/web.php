@@ -72,9 +72,10 @@ route::post('/user/{id}/notactive',[Admincontroller::class,'if_notactive'])->nam
 route::get('course/show',[Admincontroller::class,'show_course'])->name('show.course');
 route::post('course/add',[Admincontroller::class,'add_course'])->name('add.course');
 route::delete('course/{id}/delete',[Admincontroller::class,'delete_course'])->name('delete.course');
+//DOWNLOADXML
+route::get('/studentxml',[XML::class,'xml'])->name('xml')->name('xml.download');
 });
 //XML CONFIGURATION
-// route::get('/studentxml',[XML::class,'xml'])->name('xml');
 //   route::get('contact',function(){
 //   mail::to('takinyene@gmail.com')->send(new Contactmail());
 //   return new Contactmail();

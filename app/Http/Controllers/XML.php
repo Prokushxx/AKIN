@@ -44,7 +44,7 @@ class XML extends Controller
 //         }
 //         return $xml; -->
 
-$fxml=Storage::get('fxml.xml');
+$fxml=Storage::get('fxml.txt');
 
 $approved = DB::table('students')
             ->join('users', 'users.id', '=', 'students.stud_id')
@@ -62,11 +62,11 @@ $approved = DB::table('students')
                 $xml.='  '.'<Email>'.$accept->email.'</Email>'."\r\n";
                 $xml.='  '.'<\Payment>'."\r\n";
             }
-$xml ='<Payments>'."\r\n";
-$filename = 'Payments'.$fxml.''.'xml';
+$xml .='<Payments>'."\r\n";
+$filename = 'Payments'.$fxml.'.'.'xml';
 Storage::put($filename,$xml);
-$fxml=$fxml+1;
-Storage::put('fxml.xml',$fxml);
+// $fxml=$fxml+1;
+Storage::put('fxml.txt',$fxml);
 return Storage::download($filename);
        
     }
