@@ -30,8 +30,8 @@ use App\Models\User;
 Route::get('/', function () {
   // new Contactmail();
   // mail::to('takinyene@gmail.com')->send(new Contactmail());
-  $comments=Testimonial::with('user')->get();
-  return view('home',['comments'=>$comments]);
+  $comments=Testimonial::with('user')->latest();
+  return view('home',['comments'=>$comments]);  
  });
 
 route::get('/course',[Coursecontroller::class,'show_courses'])->name('course.show');

@@ -29,6 +29,6 @@ class Contactmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('I am lost asf')->view('email.mailview');
+        return $this->subject('From HEART a HEART user')->view('email.mailview');
     }
 }
