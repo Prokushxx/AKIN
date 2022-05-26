@@ -74,27 +74,27 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="street" class="block text-sm font-medium text-gray-700">Street
                                 </label>
-                                <input type="text" name="street"  placeholder = "{{$student->street}}"
+                                <input type="text" name="street"  placeholder = "{{$student->street}}" required
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="town" class="block text-sm font-medium text-gray-700">
                                     Town</label>
-                                <input type="text" name="town" id="town" placeholder="{{$student->town}}" autocomplete="family-name"
+                                <input type="text" name="town" id="town" placeholder="{{$student->town}}" autocomplete="family-name" required
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="country" class="block text-sm font-medium text-gray-700">
                                     Country</label>
-                                <input type="text" name="country"  placeholder="{{$student->country}}" value="{{$student->country}}"
+                                <input type="text" name="country"  placeholder="{{$student->country}}" value="{{$student->country}}" required
                                     class="mt-3 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
 
                             </div>
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="parish" class="block text-sm font-medium text-gray-700">
                                     Parish</label>
-                                <input type="text" name="parish" placeholder="{{$student->parish}}" id="parish"
+                                <input type="text" name="parish" placeholder="{{$student->parish}}" id="parish" required
                                     class="mt-3 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 
@@ -102,7 +102,7 @@
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="Telephone" class="block text-sm font-medium text-gray-700">Telephone</label>
-                                <input type="number" name="telephone" placeholder="{{$student->telephone}}" id="Telephone"
+                                <input type="number" name="telephone" placeholder="{{$student->telephone}}" id="Telephone" required
                                     class="mt-3 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 

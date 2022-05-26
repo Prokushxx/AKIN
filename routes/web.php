@@ -30,7 +30,8 @@ use App\Models\User;
 Route::get('/', function () {
   // new Contactmail();
   // mail::to('takinyene@gmail.com')->send(new Contactmail());
-  $comments=Testimonial::with('user')->latest();
+  $comments=Testimonial::with('user')->latest()->first();
+  // dd($comments);
   return view('home',['comments'=>$comments]);  
  });
 

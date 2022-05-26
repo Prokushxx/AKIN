@@ -334,11 +334,12 @@
     </section>
 
     
+    @auth
     <section class="testimonials">
         <h1>What our students say</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <div class="row">
-          @foreach ($comments as $comment)
+          @foreach ($comments->user as $comment)
           <div class="testimonials-col">
             <div>
               <p>{{ $comment->comments }}</p>
@@ -348,7 +349,6 @@
           @endforeach
         </div>
 
-        @auth()
           
         @if (auth()->user()->User_type == 'user')
         
@@ -360,9 +360,9 @@
         </form>
         
         @endif
-        @endauth
-
-    </section>
+        
+      </section>
+      @endauth
 
 
     <!-- Call to Action  -->

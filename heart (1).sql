@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2021 at 03:16 PM
+-- Generation Time: Oct 07, 2021 at 04:38 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -40,11 +40,23 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`c_id`, `c_name`, `price`, `created_at`, `updated_at`) VALUES
-(1, 'Network Support', 50000, NULL, NULL),
 (2, 'Customer Service', 60000, NULL, NULL),
 (3, 'Administrative Assistance', 8000, NULL, NULL),
-(4, 'Accounting', 6000, NULL, NULL),
-(5, 'Food and Beverage', 2000, '2021-10-01 22:48:01', '2021-10-01 22:48:01');
+(4, 'Accounting', 6000, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mails`
+--
+
+CREATE TABLE `mails` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -70,7 +82,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2021_09_20_014328_create_qualifications_table', 1),
 (6, '2021_09_20_014331_create_pic_table', 1),
 (7, '2021_09_28_043555_create_testimonials_table', 1),
-(8, '2021_09_30_163239_create_payments_table', 1);
+(8, '2021_09_30_163239_create_payments_table', 1),
+(9, '2021_10_05_161108_create_mails_table', 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +107,7 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `user_id`, `course_id`, `cardnumber`, `cvc`, `expirationdate`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 4567890, 65, '20/65', '2021-10-02 06:01:12', '2021-10-02 06:01:12');
+(2, 3, 2, 2345, 76, '22/26', '2021-10-06 08:50:29', '2021-10-06 08:50:29');
 
 -- --------------------------------------------------------
 
@@ -134,7 +147,8 @@ CREATE TABLE `pics` (
 --
 
 INSERT INTO `pics` (`pic_id`, `users_id`, `pic_name`, `pic_location`, `created_at`, `updated_at`) VALUES
-(1, 2, 'blackGirl.png', 'public/PHOTO/blackGirl.png', '2021-10-01 22:32:42', '2021-10-01 22:32:42');
+(1, 2, 'blackGirl2.png', 'public/PHOTO/blackGirl2.png', '2021-10-06 08:37:42', '2021-10-06 08:37:42'),
+(3, 3, 'Lemon Lime.jpg', 'public/PHOTO/Lemon Lime.jpg', '2021-10-06 08:49:31', '2021-10-06 08:49:31');
 
 -- --------------------------------------------------------
 
@@ -159,10 +173,8 @@ CREATE TABLE `qualifications` (
 --
 
 INSERT INTO `qualifications` (`qual_id`, `user_id`, `subject`, `exam_body`, `qualification`, `grade`, `year`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Math', 'CXC', 'Certificate', 2, 2001, '2021-10-01 22:40:08', '2021-10-01 22:40:08'),
-(2, 2, 'Engineering', 'CSEC', 'DEGREE', 2, 2009, '2021-10-01 23:10:50', '2021-10-01 23:10:50'),
-(3, 2, 'Science', 'CXC', 'CERTIFICATE', 1, 2020, '2021-10-02 00:02:20', '2021-10-02 00:02:20'),
-(4, 2, 'P.E', 'CXC', 'Certificate', 3, 2021, '2021-10-02 00:02:41', '2021-10-02 00:02:41');
+(1, 2, 'Math', 'CXC', 'CERTIFICATE', 1, 2018, '2021-10-06 08:38:15', '2021-10-06 08:38:15'),
+(2, 3, 'Engineering', 'CXC', 'DEGREE', 2, 2020, '2021-10-06 08:50:10', '2021-10-06 08:50:10');
 
 -- --------------------------------------------------------
 
@@ -184,6 +196,7 @@ CREATE TABLE `students` (
   `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `parish` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telephone` int(11) NOT NULL,
+  `status` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `paymentstatus` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -193,8 +206,9 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`stud_id`, `course_id`, `TRN`, `firstname`, `lastname`, `gender`, `DOB`, `email`, `street`, `town`, `country`, `parish`, `telephone`, `paymentstatus`, `created_at`, `updated_at`) VALUES
-(1, 1, 134566, 'Akinyene', 'Thompson', 'Male', '2015-03-01', 'takinyene@gmail.com', '37', 'Town', 'Jamaica', 'KINGSTON', 5337864, 'paid', '2021-10-01 22:32:41', '2021-10-02 06:01:12');
+INSERT INTO `students` (`stud_id`, `course_id`, `TRN`, `firstname`, `lastname`, `gender`, `DOB`, `email`, `street`, `town`, `country`, `parish`, `telephone`, `status`, `paymentstatus`, `created_at`, `updated_at`) VALUES
+(2, 2, 4567, 'Akinyene', 'Thompson', 'Male', '2021-10-05', 'takinyene@gmail.com', '1 street', '1 town', '1 country', 'KINGSTON', 6543234, 'Accepted', 'pending', '2021-10-06 08:45:15', '2021-10-06 09:45:27'),
+(3, 2, 34567, 'Lionel', 'Messi', 'Male', '2002-06-05', 'leo@gmail.com', '1 street', '1 town', '1 country', 'KINGSTON', 5337864, 'Accepted', 'paid', '2021-10-06 08:49:31', '2021-10-06 09:46:18');
 
 -- --------------------------------------------------------
 
@@ -234,8 +248,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `email_verified_at`, `User_type`, `password`, `remember_token`, `Active_flag`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, 'Admin', '$2y$10$A/jLF6hwvKBxuZSVy3PMie5wV/3DydZ7SxaXBB0YR3sGNhh2bUcdy', NULL, 1, NULL, NULL),
-(2, 'Akinyene Thompson', 'takinyene@gmail.com', NULL, 'user', '$2y$10$rXCcpNlnsXC0gRBAItM49OMdEoqXjLbPhaR6.q7kGihhgfTT2eU1m', NULL, 1, '2021-10-01 22:13:09', '2021-10-02 06:02:54');
+(1, 'Admin', 'admin@gmail.com', NULL, 'Admin', '$2y$10$zqZpPMITmxqfcTeRe2P3h.6sbOfBftouPslRWpAPcF.IL2jAAILqq', NULL, 1, NULL, NULL),
+(2, 'Akinyene Thompson', 'takinyene@gmail.com', NULL, 'user', '$2y$10$qE0ZGlFYE1NKAjnhiXoAHOeyQ3ch69123e4fZRRriM7X9Ud4Xq9KW', NULL, 1, '2021-10-06 08:36:32', '2021-10-06 08:36:32'),
+(3, 'Lionel Messi', 'leo@gmail.com', NULL, 'user', '$2y$10$V0S3qdpxAydhBSK50/NA4uVaO.QdencRbXfHW46Fp9oIWwNoMXSa2', NULL, 1, '2021-10-06 08:48:12', '2021-10-06 08:48:12');
 
 --
 -- Indexes for dumped tables
@@ -246,6 +261,12 @@ INSERT INTO `users` (`id`, `username`, `email`, `email_verified_at`, `User_type`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`c_id`);
+
+--
+-- Indexes for table `mails`
+--
+ALTER TABLE `mails`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -313,19 +334,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `c_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `c_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `mails`
+--
+ALTER TABLE `mails`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -337,19 +364,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `pics`
 --
 ALTER TABLE `pics`
-  MODIFY `pic_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pic_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `qualifications`
 --
 ALTER TABLE `qualifications`
-  MODIFY `qual_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `qual_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `stud_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `stud_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
@@ -361,7 +388,7 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -371,7 +398,7 @@ ALTER TABLE `users`
 -- Constraints for table `payments`
 --
 ALTER TABLE `payments`
-  ADD CONSTRAINT `payments_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`c_id`),
+  ADD CONSTRAINT `payments_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`c_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `payments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
